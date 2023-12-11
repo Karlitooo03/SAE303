@@ -63,16 +63,16 @@ public function insertData($nom, $mail)
 	try {
 		$stmt = $this->conn->prepare("INSERT INTO utilisateurs (nom, email) VALUES (:nom, :mail)");
 		$stmt->bindParam(':nom', $nom);
-		$stmt->bindParam(':email', $mail);
+		$stmt->bindParam(':mail', $mail);
 		$stmt->execute();
 		echo "Données insérées avec succès.";
 	} catch (PDOException $e) {
 		echo "Erreur lors de l'insertion des données : " . $e->getMessage();
 	}
-	
+
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$name = $_POST["nom"];
-		$email = $_POST["email"];
+		$email = $_POST["mail"];
 	
 		$db = new database();
 		$db->insertData($nom, $mail);
