@@ -15,6 +15,7 @@ echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
 
 	$sql = "Select * from ".$modele->getTable().";";
 
+	
 	$resultat = $tab1->requete($sql);
 
 	
