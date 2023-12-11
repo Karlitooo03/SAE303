@@ -69,5 +69,13 @@ public function insertData($nom, $mail)
 	} catch (PDOException $e) {
 		echo "Erreur lors de l'insertion des données : " . $e->getMessage();
 	}
+	
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$name = $_POST["nom"];
+		$email = $_POST["email"];
+	
+		$db = new database();
+		$db->insertData($nom, $mail);
+	}
 }
 }
