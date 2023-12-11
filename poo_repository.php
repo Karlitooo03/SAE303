@@ -41,7 +41,7 @@ class Repository extends Model {
 		return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs)->fetchAll();
 	}
 	
-		
+		//Insertion
 	public function insertData($champs,$valeurs) {
 
 		$sql = "INSERT INTO ".$this->table. '('. $champs.')'." VALUES (".$valeurs.")";
