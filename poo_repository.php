@@ -13,7 +13,7 @@ class Repository extends Model {
         //Cas des requêtes simples
         return $this->db->query($sql);
     }	
-/*
+
 	public function findAll() {
 		$query = $this->requete('SELECT * FROM '.$this->table);
 		return $query->fetchAll();
@@ -40,14 +40,9 @@ class Repository extends Model {
 		// Exécuter la requête
 		return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs)->fetchAll();
 	}
-	*/
-		//yv
-	public function insertData($nom,$prenom,$adresse,$mail,$tel) {
-		// Assurez-vous que les noms de colonnes dans votre table correspondent à vos variables
-		$champs = "nom, prenom, adresse, mail, tel";
-
-		// Utilisez des marqueurs de paramètres pour éviter les attaques par injection SQL
-		$valeurs = ":nom, :prenom, :adresse, :mail, :tel";
+	
+		//Insertion
+	public function insertData($champs,$valeurs) {
 
 		$sql = "INSERT INTO ".$this->table. '('. $champs.')'." VALUES (".$valeurs.")";
 		
@@ -59,7 +54,7 @@ class Repository extends Model {
 	
 	}
 	
-	/*public function delete(int $id){
+	public function delete(int $id){
 		return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
-}*/
+}
 }
