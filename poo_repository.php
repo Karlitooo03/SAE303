@@ -49,9 +49,11 @@ class Repository extends Model
 	}
 
 
-	public function insertData($champs, $valeurs)
-	{
 
+	public function insertData($nom, $prenom)
+	{
+		$champs = "nom, prenom,";
+		$valeurs = ":nom, :prenom";
 		$sql = "INSERT INTO " . $this->table . '(' . $champs . ')' . " VALUES (" . $valeurs . ")";
 
 		echo $sql;
