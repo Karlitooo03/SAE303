@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+ 
+    <title>exemple formulaire</title>
+</head>
+<body>
+
+
+
+<style>
+
+    input{
+       
+        margin: 5px;
+        width: 225px;
+    }
+    select{
+        margin: 5px;
+    }
+
+    form{
+        margin-left: 40%;
+        margin-right: 45%;
+
+    }
+</style>
+
+
+
+
+    
+    <form action="GET">
+        <legend>Veuillez indiquer votre civilté</legend>
+       Femme <input name="0" for="f" type="radio"> <br>   
+       Homme <input name="1" for="h" type="radio"><br>
+     
+<input type="text" placeholder="Veuillez entrez votre prénom"><br>
+<input type="text" placeholder="Veuillez entrez votre nom"><br>
+<input type="date" placeholder="Veuillez renseigner votre date de naissance"><br>
+<input type="email" placeholder="Veuillez entrez votre adresse e-mail"><br>
+
+<input type="text" name="" placeholder="Veuillez rentrez votre adresse"><br>
+<input type="number" name="codepostal" minlength="5" maxlength="5" placeholder="Veuillez rentrez votre code postal">
+<select name="ville"><br>
+  <option value="">Choisissez votre ville</option>
+  <option value="villea">Ville A</option>
+  <option value="villeb">Ville B</option>
+  <option value="villec">Ville C</option>
+</select><br>
+
+<select name="situation"><br>
+    <option value="">Choisissez votre situation familiale</option>
+    <option value="marié">Marié.e</option>
+    <option value="pacsé">Pacsé.e</option>
+    <option value="divorcé">Divorcé.e</option>
+    <option value="celib">Célibataire</option>
+  </select><br>
+
+  <input type="number" name="tel" minlength="10" maxlength="10" placeholder="Veuillez rentrez votre numéro de téléphone portable"><br>
+
+  <select name="personneacharge"><br>
+    <option value="">Veuillez renseigner le nombre de personne que vous avez à vore charge</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select><br>
+
+  <input type="submit" name="submit" value="Je m'inscris">
+
+
+
+    </form>
+
+
+
+</body>
+</html>
