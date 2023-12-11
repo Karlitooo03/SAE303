@@ -18,9 +18,8 @@ echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
 	$resultat = $tab1->requete($sql);
 
 	
-		echo '<table class="table table-striped ">';
-	
 		
+		echo '<table class="table table-striped ">';
 		echo '<tr>';
 		echo'<th scope="col"> Civilité</th>';
 		echo'<th scope="col"> Prénom</th>';
