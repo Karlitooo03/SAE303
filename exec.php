@@ -7,6 +7,7 @@ echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstra
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>';
 
+  //afficher le tableau des adhérents
 echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
   try {
 	$modele = new Model("adherents");
@@ -15,11 +16,9 @@ echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
 
 	$sql = "Select * from ".$modele->getTable().";";
 
-	
 	$resultat = $tab1->requete($sql);
 
 	
-		
 		echo '<table class="table table-striped ">';
 		echo '<tr>';
 		echo'<th scope="col"> Civilité</th>';
@@ -32,7 +31,7 @@ echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
 		echo'<th scope="col"> Nombre de personne à charge</th>';
 		echo'<th scope="col"> Numéro de téléphone</th>';
 		echo '</tr>';
-		
+
 		foreach ($resultat as $ligne) {
 		echo '<tr>';		
 		echo '<td>';
@@ -63,18 +62,20 @@ echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
 		echo $ligne['tel'];
 		echo '</td>';	
 		echo '</tr>';
-		echo '</table>';
+		
 	}
+	echo '</table>';
 }
 	 catch(PDOException $e){
            die($e->getMessage());
    }
 
 
-//reservations
+//afficher le tableau des reservations
 
 
 echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
+
   try {
 	$modele = new Model("reservations");
 
@@ -83,13 +84,8 @@ echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
 	$sql = "Select * from ".$modele->getTable().";";
 
 	$resultat = $tab2->requete($sql);
-
-	foreach ($resultat as $ligne) {
-		echo '<table class="table table-striped ">';
-	
-		/**/
-		echo '<tr>';
-		
+	echo '<table class="table table-striped ">';	
+	echo '<tr>';		
 		echo'<th scope="col"> Prénom</th>';
 		echo'<th scope="col"> Nom</th>';
 		echo'<th scope="col"> Date de naissance</th>';
@@ -99,6 +95,9 @@ echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
 		echo'<th scope="col"> Avion</th>';
 		echo'<th scope="col"> Numéro de téléphone</th>';
 		echo '</tr>';
+
+	foreach ($resultat as $ligne) {
+		
 		echo '<tr>';		
 		echo '<td>';
 		echo $ligne['prenom'];
@@ -125,12 +124,15 @@ echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
 		echo $ligne['tel'];
 		echo '</td>';	
 		echo '</tr>';
-		echo '</table>';
+		
 	}
+	echo '</table>';
 }
 	 catch(PDOException $e){
            die($e->getMessage());
    }
+
+//afficher le tableau des pilotes
 
    echo ' <h1 class="text-center py-4"> Liste des pilotes </h1>';
    try {
@@ -141,9 +143,7 @@ echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
 	 $sql = "Select * from ".$modele->getTable().";";
  
 	 $resultat = $tab3->requete($sql);
- 
-	 foreach ($resultat as $ligne) {
-		 echo '<table class="table table-striped ">';
+	 echo '<table class="table table-striped ">';
 	 
 		 /**/
 		 echo '<tr>';
@@ -153,6 +153,9 @@ echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
 		 echo'<th scope="col"> Diplome </th>';
 		 echo'<th scope="col"> Adresse e-mail</th>';
 		 echo '</tr>';
+ 
+	 foreach ($resultat as $ligne) {
+		 
 		 echo '<tr>';		
 		 echo '<td>';
 		 echo $ligne['prenom'];
@@ -170,32 +173,34 @@ echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
 		 echo $ligne['mail'];
 		 echo '</td>';	
 		 echo '</tr>';
-		 echo '</table>';
+		 
 	 }
+	 echo '</table>';
  }
 	  catch(PDOException $e){
 			die($e->getMessage());
 	}
 
-	//Table avion
-	echo ' <h1 class="text-center py-4"> Liste des pilotes </h1>';
+	//afficher le tableaux des avions
+	echo ' <h1 class="text-center py-4"> Liste des avions </h1>';
 	try {
 	  $modele = new Model("avions");
   
 	  $tab3 = new Repository($modele->getTable());
   
 	  $sql = "Select * from ".$modele->getTable().";";
+	  echo '<table class="table table-striped ">';
+	  
+	  /**/
+	  echo '<tr>';
+	  echo'<th scope="col"> Id</th>';
+	  echo'<th scope="col"> Nom</th>';
+	  echo '</tr>';
   
 	  $resultat = $tab3->requete($sql);
   
 	  foreach ($resultat as $ligne) {
-		  echo '<table class="table table-striped ">';
-	  
-		  /**/
-		  echo '<tr>';
-		  echo'<th scope="col"> Id</th>';
-		  echo'<th scope="col"> Nom</th>';
-		  echo '</tr>';
+		 
 		  echo '<tr>';		
 		  echo '<td>';
 		  echo $ligne['id'];
@@ -204,8 +209,9 @@ echo ' <h1 class="text-center py-4"> Liste des réservations </h1>';
 		  echo $ligne['nom'];
 		  echo '</td>';					
 		  echo '</tr>';
-		  echo '</table>';
+		  
 	  }
+	  echo '</table>';
   }
 	   catch(PDOException $e){
 			 die($e->getMessage());
