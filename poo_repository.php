@@ -53,7 +53,7 @@ class Repository extends Model {
 		$this->db->exec($sql);	
 	
 	}
-	
+	//jui
 	public function delete(int $id){
 		return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
 }
