@@ -17,7 +17,7 @@ echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
 
 	$resultat = $tab1->requete($sql);
 
-	foreach ($resultat as $ligne) {
+	
 		echo '<table class="table table-striped ">';
 	
 		
@@ -32,6 +32,7 @@ echo ' <h1 class="text-center py-4"> Liste des adhérents </h1>';
 		echo'<th scope="col"> Nombre de personne à charge</th>';
 		echo'<th scope="col"> Numéro de téléphone</th>';
 		echo '</tr>';
+		foreach ($resultat as $ligne) {
 		echo '<tr>';		
 		echo '<td>';
 		echo $ligne['civilité'];
