@@ -19,8 +19,14 @@ try {
 	$nom = $_POST["nom"];
 	$prenom = $_POST["prenom"];
 	$mail = $_POST["mail"];
-	$champs = "nom, prenom, mail";
-	$valeurs = "'" . $nom . "'" . "," . "'" . $prenom . "'" . ",'" . $mail . "'";
+	$datedenaissance = $_POST["datedenaissance"];
+	$mdp = $_POST["mdp"];
+	$adresse = $_POST["adresse"];
+	$situation = $_POST["situation"];
+	$charge = $_POST["charge"];
+	$tel = $_POST["tel"];
+	$champs = "nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel";
+	$valeurs = "'" . $nom . "'" . ",'" . $prenom . "'" . ",'" . $mail . "'," . $datedenaissance . ",'" . $mdp . "'," . $adresse . "'," . $situation . "'," . $charge . "'," . $tel . "'";
 
 	$tab1->insertData($champs, $valeurs);
 
