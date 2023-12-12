@@ -18,6 +18,11 @@ try {
 
 	$resultat = $tab1->requete($sql);
 
+	$champs = "nom, prenom";
+	$valeurs = ":nom, :prenom";
+	$nom = $_POST["nom"];
+	$prenom = $_POST["prenom"];
+	$tab1->insertData($champs, $valeurs);
 
 	echo '<table class="table table-striped ">';
 	echo '<tr>';

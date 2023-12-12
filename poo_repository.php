@@ -24,11 +24,11 @@ class Repository extends Model
 		return $query->fetchAll();
 	}
 
-	public function find(int $id)
+	/*public function find(int $id)
 	{
 		// Exécuter la requête
 		return $this->requete("SELECT * FROM {$this->table} WHERE id = $id")->fetch();
-	}
+	}*/
 
 	public function findBy(array $criteres)
 	{
@@ -50,18 +50,16 @@ class Repository extends Model
 
 
 
-	public function insertData($nom, $prenom)
+	public function insertData($champs, $valeurs)
 	{
-		$champs = "nom, prenom,";
-		$valeurs = ":nom, :prenom";
+
 		$sql = "INSERT INTO " . $this->table . '(' . $champs . ')' . " VALUES (" . $valeurs . ")";
 
-		echo $sql;
-
-		$statt = $this->db->prepare($sql);
+		$this->db->prepare($sql);
 
 		$this->db->exec($sql);
 	}
+
 
 	public function delete(int $id)
 	{
