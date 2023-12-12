@@ -61,7 +61,7 @@ class Repository extends Model {
 public function insertData($nom, $mail)
 {
 	try {
-		$stmt = $this->conn->prepare("INSERT INTO utilisateurs (nom, email) VALUES (:nom, :mail)");
+		$stmt = $this->conn->prepare("INSERT INTO adherents (nom, mail) VALUES (:nom, :mail)");
 		$stmt->bindParam(':nom', $nom);
 		$stmt->bindParam(':mail', $mail);
 		$stmt->execute();
@@ -69,13 +69,15 @@ public function insertData($nom, $mail)
 	} catch (PDOException $e) {
 		echo "Erreur lors de l'insertion des données : " . $e->getMessage();
 	}
-
+	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$name = $_POST["nom"];
-		$email = $_POST["mail"];
+		$nom = $_POST["nom"];
+		$mail = $_POST["mail"];
 	
 		$db = new database();
 		$db->insertData($nom, $mail);
 	}
+	
 }
+
 }
