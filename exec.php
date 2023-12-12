@@ -15,13 +15,13 @@ try {
 	$tab1 = new Repository($modele->getTable());
 
 	$sql = "Select * from " . $modele->getTable() . ";";
-
 	$resultat = $tab1->requete($sql);
-
-	$champs = "nom, prenom";
-	$valeurs = ":nom, :prenom";
 	$nom = $_POST["nom"];
 	$prenom = $_POST["prenom"];
+	$mail = $_POST["mail"];
+	$champs = "nom, prenom, mail";
+	$valeurs = "'" . $nom . "'" . "," . "'" . $prenom . "'" . ",'" . $mail . "'";
+
 	$tab1->insertData($champs, $valeurs);
 
 	echo '<table class="table table-striped ">';

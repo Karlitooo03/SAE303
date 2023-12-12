@@ -4,7 +4,7 @@ require_once "poo_database.php";
 class Model extends Database
 {
 
-	private $table;
+	protected $table;
 	// Table de la base de données
 	protected string $adherents;
 	protected string $reservations;

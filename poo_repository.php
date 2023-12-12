@@ -4,7 +4,6 @@ require_once("poo_models.php");
 
 class Repository extends Model
 {
-	private $table;
 
 	function __construct(string $table)
 	{
@@ -54,6 +53,8 @@ class Repository extends Model
 	{
 
 		$sql = "INSERT INTO " . $this->table . '(' . $champs . ')' . " VALUES (" . $valeurs . ")";
+
+		echo $sql;
 
 		$this->db->prepare($sql);
 
