@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fe">
+<head>
+    <meta charset="UTF-8">
+    <title>API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <!--<input type="button" value="api" onclick="getWeather()"> -->
+    <div id="meteo">
+        <!--<input type="text" name="" id="ville"> -->
+        <!--<input type="button" value="api" onclick="getWeather()"> -->
+
+    </div>
+</body>
+
+
+<script>
+
+var callSuccess = function(data){
+console.log(" donnes api ", data);
+var meteo = document.getElementById("meteo");
+var temperatureKelvin = data.main.temp;
+var temperatureCelsius = temperatureKelvin - 273.15;
+    var iconCode = data.weather[0].icon;
+    var iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+    var ville = data.name;
+    //var getville = document.getElementById("ville");
+
+//meteo.innerHTML = "A Paris, il fait " + temperature + " degrés <img src='" + iconUrl + "' alt='Image du temps'>";
+meteo.innerHTML = "A " + ville + " , il fait  " + temperatureCelsius.toFixed(0) + " degrés  <img src='" + iconUrl + "' alt='Image du temps'>"
+//alert("Meteo temps : " + data.main.temp)
+}
+
+function getWeather(){
+    
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=Dijon&appid=7fdb48df5993f3acec244d1c2652170d"
+
+$.get(url, callSuccess).done(function(){
+
+})
+.fail(function(){
+    alert("error");
+
+})
+.always(function(){
+
+});
+}
+getWeather()
+</script>
+
+</html>
