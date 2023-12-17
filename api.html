@@ -8,6 +8,7 @@
 <body>
     <!--<input type="button" value="api" onclick="getWeather()"> -->
     <div id="meteo">
+        <p id="temps"></p>
         <!--<input type="text" name="" id="ville"> -->
         <!--<input type="button" value="api" onclick="getWeather()"> -->
 
@@ -25,11 +26,13 @@ var temperatureCelsius = temperatureKelvin - 273.15;
     var iconCode = data.weather[0].icon;
     var iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
     var ville = data.name;
+    var temps = data.weather[0].description;
     //var getville = document.getElementById("ville");
 
 //meteo.innerHTML = "A Paris, il fait " + temperature + " degrés <img src='" + iconUrl + "' alt='Image du temps'>";
-meteo.innerHTML = "A " + ville + " , il fait  " + temperatureCelsius.toFixed(0) + " degrés  <img src='" + iconUrl + "' alt='Image du temps'>"
+meteo.innerHTML = "A " + ville + " , il fait  " + temperatureCelsius.toFixed(0) + " degrés  <img src='" + iconUrl + "' alt='Image du temps'>" + "Descrption : " + temps;
 //alert("Meteo temps : " + data.main.temp)
+
 }
 
 function getWeather(){
