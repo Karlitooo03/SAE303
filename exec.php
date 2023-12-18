@@ -26,7 +26,7 @@ try {
 	$charge = $_POST["charge"];
 	$tel = $_POST["tel"];
 	$champs = "nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel";
-	$valeurs = "'" . $nom . "'" . ",'" . $prenom . "'" . ",'" . $mail . "'," . $datedenaissance . ",'" . $mdp . "'," . $adresse . "'," . $situation . "'," . $charge . "'," . $tel . "'";
+	$valeurs = "'" . $nom . "','" . $prenom . "','" . $mail . "','" . $datedenaissance . "','" . $mdp . "','" . $adresse . '","' . $situation . "','" . $charge . "','" . $tel . "'";
 
 	$tab1->insertData($champs, $valeurs);
 
