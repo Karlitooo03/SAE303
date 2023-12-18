@@ -31,17 +31,17 @@
 
 
     
-    <form action="poo_repository.php" method="post">
+    <form action="exec.php" method="POST">
         <legend>Veuillez indiquer votre civilté</legend>
        Femme <input name="0" for="f" type="radio"> <br>   
        Homme <input name="1" for="h" type="radio"><br>
      
-<input type="text"name="prenom" placeholder="Veuillez entrez votre prénom"><br>
+<input type="text" name="prenom" placeholder="Veuillez entrez votre prénom"><br>
 <input type="text" name="nom" placeholder="Veuillez entrez votre nom"><br>
-<input type="date" name="datedenaissance" placeholder="Veuillez renseigner votre date de naissance"><br>
+<input type="date" placeholder="Veuillez renseigner votre date de naissance"><br>
 <input type="email" name="mail" placeholder="Veuillez entrez votre adresse e-mail"><br>
 
-<input type="text" name="adresse" placeholder="Veuillez rentrez votre adresse"><br>
+<input type="text" name="" placeholder="Veuillez rentrez votre adresse"><br>
 <input type="number" name="codepostal" minlength="5" maxlength="5" placeholder="Veuillez rentrez votre code postal">
 <select name="ville"><br>
   <option value="">Choisissez votre ville</option>
@@ -60,7 +60,7 @@
 
   <input type="number" name="tel" minlength="10" maxlength="10" placeholder="Veuillez rentrez votre numéro de téléphone portable"><br>
 
-  <select name="personneacharge"><br>
+  <select name="charge"><br>
     <option value="">Veuillez renseigner le nombre de personne que vous avez à vore charge</option>
     <option value="0">0</option>
     <option value="1">1</option>
