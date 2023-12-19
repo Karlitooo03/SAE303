@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap');
 
 body {
+/*   width: 100%;
+    position: relative;
+    background: url("../img/hero-bg.jpg") top center;
+    background-size: cover; */
   font-family: 'Exo 2', sans-serif;
   color: #444444;
 }
@@ -315,31 +319,31 @@ to{
 
 .form-control:focus {
     box-shadow: none;
-    border-color: #BA68C8
+    border-color: #3E44C0
 }
 
 .profile-button {
-    background: rgb(99, 39, 120);
+    background: #3E44C0;
     box-shadow: none;
     border: none;
 }
 
 .profile-button:hover {
-    background: #682773;
+    background: #3E44C0;
 }
 
 .profile-button:focus {
-    background: #682773;
+    background: #3E44C0;
     box-shadow: none;
 }
 
 .profile-button:active {
-    background: #682773;
+    background: #3E44C0;
     box-shadow: none;
 }
 
 .back:hover {
-    color: #682773;
+    color: #3E44C0;
     cursor: pointer;
 }
 
@@ -349,10 +353,10 @@ to{
 }
 
 .add-experience:hover {
-    background: #BA68C8;
+    background: #3E44C0;
     color: #fff;
     cursor: pointer;
-    border: solid 1px #BA68C8;
+    border: solid 1px #3E44C0;
 }
 
 #h, #f{
