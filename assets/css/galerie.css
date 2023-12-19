@@ -6,7 +6,6 @@ body {
     position: relative;
     background: url("../img/hero-bg.jpg") top center;
     background-size: cover;
-    position: relative;
     min-height: 100vh;
     font: normal 16px sans-serif;
     padding: 40px 0;
@@ -284,7 +283,6 @@ a {
     padding: 40px;
 }
 
-/* Override bootstrap column paddings */
 .tz-gallery .row > div {
     padding: 2px;
 }
