@@ -38,23 +38,24 @@
         Femme <input name="0" for="f" type="radio"> <br>
         Homme <input name="1" for="h" type="radio"><br>
 
-        <input type="text" name="prenom" placeholder="Veuillez entrez votre prénom"><br>
-        <input type="text" name="nom" placeholder="Veuillez entrez votre nom"><br>
-        <input type="date" name="datedenaissance" placeholder="Veuillez renseigner votre date de naissance"><br>
-        <input type="email" name="mail" placeholder="Veuillez entrez votre adresse e-mail"><br>
-        <input type="password" name="mdp" placeholder="Veuillez entrez votre mot de passe"><br>
-
-        <input type="text" name="adresse" placeholder="Veuillez rentrez votre adresse"><br>
-        <input type="number" name="codepostal" minlength="5" maxlength="5"
+        <input required type="text" name="prenom" placeholder="Veuillez entrez votre prénom"><br>
+        <input required type="text" name="nom" placeholder="Veuillez entrez votre nom"><br>
+        <input required type="date" name="datedenaissance"
+            placeholder="Veuillez renseigner votre date de naissance"><br>
+        <input required type="email" name="mail" placeholder="Veuillez entrez votre adresse e-mail"><br>
+        <input required type="password" name="mdp" placeholder="Veuillez entrez votre mot de passe"><br>
+        //input multiple
+        <input required type="text" name="adresse" placeholder="Veuillez rentrez votre adresse"><br>
+        <input required type="number" name="codepostal" minlength="5" maxlength="5"
             placeholder="Veuillez rentrez votre code postal">
-        <select value="ville" name="ville"><br>
+        <select required value="ville" name="ville"><br>
             <option>Choisissez votre ville</option>
             <option name="villea">Ville A</option>
             <option name="villeb">Ville B</option>
             <option name="villec">Ville C</option>
         </select><br>
 
-        <select name="situation"><br>
+        <select required name="situation"><br>
             <option value="">Choisissez votre situation familiale</option>
             <option name="marié">Marié.e</option>
             <option name="pacsé">Pacsé.e</option>
@@ -62,18 +63,18 @@
             <option name="celib">Célibataire</option>
         </select><br>
 
-        <input type="number" name="tel" minlength="10" maxlength="10"
+        <input required type="number" name="tel" minlength="10" maxlength="10"
             placeholder="Veuillez rentrez votre numéro de téléphone portable"><br>
 
-        <select name="charge"><br>
+        <select requiredname="personneacharge"><br>
             <option value="">Veuillez renseigner le nombre de personne que vous avez à vore charge</option>
-            <option name="0">0</option>
-            <option name="1">1</option>
-            <option name="2">2</option>
-            <option name="3">3</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
         </select><br>
 
-        <input type="submit" name="submit" value="Je m'inscris">
+        <input required type="submit" name="submit" value="Je m'inscris">
 
 
 
