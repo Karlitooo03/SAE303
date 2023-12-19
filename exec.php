@@ -1,4 +1,5 @@
 <?php
+/*
 require_once "poo_repository.php";
 require_once "poo_models.php";
 
@@ -152,7 +153,7 @@ try {
 	$resultat = $tab3->requete($sql);
 	echo '<table class="table table-striped ">';
 
-	/**/
+	
 	echo '<tr>';
 	echo '<th scope="col"> <?= "tg "  ?></th>';
 	echo '<th scope="col"> Nom</th>';
@@ -196,7 +197,7 @@ try {
 	$sql = "Select * from " . $modele->getTable() . ";";
 	echo '<table class="table table-striped ">';
 
-	/**/
+	
 	echo '<tr>';
 	echo '<th scope="col"> Id</th>';
 	echo '<th scope="col"> Nom</th>';
@@ -219,3 +220,56 @@ try {
 } catch (PDOException $e) {
 	die($e->getMessage());
 }
+*/<?php
+require_once "poo_repository.php";
+require_once "poo_models.php";
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des adhérents</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <?php
+    function afficherTable(insertData($champs, $valeurs))
+    {
+        try {
+            $table = new Repository($champs->getTable());
+            $sql = "SELECT * FROM " . $champs->getTable();
+            $resultat = $table->requete($sql);
+
+            echo '<h1 class="text-center py-4"> Liste des ' . $champ->getTable() . '</h1>';
+            echo '<table class="table table-striped">';
+            echo '<tr>';
+            foreach ($valeurs as $champ) {
+                echo '<th scope="col">' . $champ . '</th>';
+            }
+            echo '</tr>';
+
+            foreach ($resultat as $ligne) {
+                echo '<tr>';
+                foreach ($valeurs as $champ) {
+                    echo '<td>' . $ligne[$champ] . '</td>';
+                }
+                echo '</tr>';
+            }
+
+            echo '</table>';
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    afficherTable(new Model("adherents"), ['prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel']);
+    afficherTable(new Model("reservations"), ['prenom', 'nom', 'date', 'mail', 'pilote', 'activité', 'avion', 'tel']);
+    afficherTable(new Model("pilotes"), ['prenom', 'nom', 'tel', 'diplome', 'mail']);
+    afficherTable(new Model("avions"), ['id', 'nom']);
+    ?>
+</body>
+</html>
