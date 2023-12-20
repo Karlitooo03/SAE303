@@ -22,5 +22,5 @@ echo 'Température: ' . $celcius . ' °<br>';
 // Afficher l'image qui correspond au temps
 $iconCode = $data['weather'][0]['icon'];
 $apiIcon = "http://openweathermap.org/img/wn/" . $iconCode . "@2x.png";
-echo '<img src="' . $apiIcon . '" alt="Weather Icon"><br>';
+echo '<img src="' . $apiIcon . '" alt="Image icon temps"><br>';
 ?>
