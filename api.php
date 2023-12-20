@@ -10,8 +10,11 @@ if ($response === false) {
 // Convertir  JSON 
 $data = json_decode($response, true);
 
-// Afficher les données météorologiques
+// Afficher les données 
 echo  $data['name'] . '<br>';
+
+
+//Convertir en celcius
 $celcius =  number_format($data['main']['temp'] - 273.15, 0);
 echo 'Température: ' . $celcius . ' °<br>';
 //echo 'Description: ' . $data['weather'][0]['description'] . '<br>';
