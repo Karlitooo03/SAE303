@@ -3,7 +3,7 @@
 require_once ("poo_models.php");
 
 class Repository extends Model {
-	/*
+	
 	function __construct(string $table) { 
 		parent::__construct($table);
 	}
@@ -56,28 +56,8 @@ class Repository extends Model {
 	//jui
 	public function delete(int $id){
 		return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
-}*/
-
-public function insertData($nom, $mail)
-{
-	try {
-		$stmt = $this->conn->prepare("INSERT INTO adherents (nom, mail) VALUES (:nom, :mail)");
-		$stmt->bindParam(':nom', $nom);
-		$stmt->bindParam(':mail', $mail);
-		$stmt->execute();
-		echo "Données insérées avec succès.";
-	} catch (PDOException $e) {
-		echo "Erreur lors de l'insertion des données : " . $e->getMessage();
-	}
-	
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$nom = $_POST["nom"];
-		$mail = $_POST["mail"];
-	
-		$db = new database();
-		$db->insertData($nom, $mail);
-	}
-	
 }
+
+
 
 }
