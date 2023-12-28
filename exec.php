@@ -1,6 +1,9 @@
 <?php
+
 require_once "poo_repository.php";
 require_once "poo_models.php";
+
+
 
 echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -32,7 +35,7 @@ try {
 
 	echo '<table class="table table-striped ">';
 	echo '<tr>';
-	echo '<th scope="col"> Civilité</th>';
+	//echo '<th scope="col"> Civilité</th>';
 	echo '<th scope="col"> Prénom</th>';
 	echo '<th scope="col"> Nom</th>';
 	echo '<th scope="col"> Date de naissance</th>';
@@ -41,13 +44,14 @@ try {
 	echo '<th scope="col"> Situation familiale</th>';
 	echo '<th scope="col"> Nombre de personne à charge</th>';
 	echo '<th scope="col"> Numéro de téléphone</th>';
+	echo '<th scope="col"> MDP</th>';
 	echo '</tr>';
 
 	foreach ($resultat as $ligne) {
 		echo '<tr>';
-		echo '<td>';
-		echo $ligne['civilité'];
-		echo '</td>';
+		//echo '<td>';
+		//echo $ligne['civilité'];
+		//echo '</td>';
 		echo '<td>';
 		echo $ligne['prenom'];
 		echo '</td>';
@@ -71,6 +75,9 @@ try {
 		echo '</td>';
 		echo '<td>';
 		echo $ligne['tel'];
+		echo '</td>';
+		echo '<td>';
+		echo $ligne['mdp'];
 		echo '</td>';
 		echo '</tr>';
 	}
@@ -152,7 +159,7 @@ try {
 	$resultat = $tab3->requete($sql);
 	echo '<table class="table table-striped ">';
 
-	/**/
+	
 	echo '<tr>';
 	echo '<th scope="col"> <?= "tg "  ?></th>';
 	echo '<th scope="col"> Nom</th>';
@@ -196,7 +203,7 @@ try {
 	$sql = "Select * from " . $modele->getTable() . ";";
 	echo '<table class="table table-striped ">';
 
-	/**/
+	
 	echo '<tr>';
 	echo '<th scope="col"> Id</th>';
 	echo '<th scope="col"> Nom</th>';
@@ -219,3 +226,56 @@ try {
 } catch (PDOException $e) {
 	die($e->getMessage());
 }
+
+//require_once "poo_repository.php";
+//require_once "poo_models.php";
+?>
+
+
+    <?php
+	/*
+	
+    function afficherTable (insertData $champs, $valeurs)
+    {
+        try {
+            $table = new Repository($champs->getTable());
+            $sql = "SELECT * FROM " . $champs->getTable();
+            $resultat = $table->requete($sql);
+
+            echo '<h1 class="text-center py-4"> Liste des ' . $champ->getTable() . '</h1>';
+            echo '<table class="table table-striped">';
+            echo '<tr>';
+            foreach ($valeurs as $champ) {
+                echo '<th scope="col">' . $champ . '</th>';
+            }
+            echo '</tr>';
+
+            foreach ($resultat as $ligne) {
+                echo '<tr>';
+                foreach ($valeurs as $champ) {
+                    echo '<td>' . $ligne[$champ] . '</td>';
+                }
+                echo '</tr>';
+            }
+
+            echo '</table>';
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+	class insertData {
+		public function getTable()
+		{
+			// Retourne le nom de la table
+			return "adherents";
+		}
+	}
+
+	afficherTable(new insertData(), ['prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel']);
+    //afficherTable(new Model("reservations"), ['prenom', 'nom', 'date', 'mail', 'pilote', 'activité', 'avion', 'tel']);
+    //afficherTable(new Model("pilotes"), ['prenom', 'nom', 'tel', 'diplome', 'mail']);
+   // afficherTable(new Model("avions"), ['id', 'nom']);
+    ?>
+</body>
+</html>
+*/
