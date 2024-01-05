@@ -61,6 +61,28 @@ class Repository extends Model
 		$this->db->exec($sql);
 	}
 
+	public function updateData($mail, $champs, $valeurs)
+{
+    $setExpressions = [];
+    foreach ($champs as $index => $champ) {
+        $setExpressions[] = "$champ = :$champ";
+    }
+
+    $sql = "UPDATE " . $this->table . " SET " . implode(", ", $setExpressions) . " WHERE id = :id";
+
+    $requete = $this->db->prepare($sql);
+
+    // Ajoutez les valeurs à la requête
+    foreach ($champs as $index => $champ) {
+        $requete->bindValue(":$champ", $valeurs[$index]);
+    }
+    $requete->bindValue(":mail", $mail);
+
+    // Exécutez la requête
+    $requete->execute();
+}
+
+
 
 	public function delete(int $id)
 	{
