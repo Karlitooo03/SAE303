@@ -39,7 +39,8 @@ function afficherTable($table, $colonnes)
         die($e->getMessage());
     }
 }
-
+$champs
+insertData($champs, $valeurs)
 // Afficher le tableau des adhérents
 $colonnesAdherents = ['prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'mdp'];
 afficherTable('adherents', $colonnesAdherents);
