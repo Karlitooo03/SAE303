@@ -1,0 +1,81 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    
+  }
+
+  body{
+    
+
+    background-image: url("/SAE303/assets/img/hero-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%; /* Assurez-vous que le corps et le HTML ont une hauteur de 100% */
+
+    
+  }
+  
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    height: 100vh;
+    align-items: flex-start;
+    
+  }
+  
+  .contenu {
+    display: flex;
+    margin-left: 20px; 
+  }
+  
+  .explicatif {
+    width: 40%;
+    padding: 20px;
+    margin-top: 18%;
+    margin-right: 25%; 
+  }
+  
+  .droite {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .entete {
+    margin-top: 50%;
+    background-color: #E5BD55;
+    width: 130%;
+    border-radius: 10px 10px 0 0;
+    font-size: 3vh;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    height: 10vh;
+    border-bottom: 1px solid #1d1d1d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .carte {
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 10px #e4e4e4;
+    width: 130%;
+    padding: 40px 60px 40px 60px ;
+    border-radius: 0 0 10px 10px;
+    
+  }
+  
+  .connect{
+    opacity: 70%;
+    color: #1d1d1d;
+  }
+
+  .connect:hover{
+    opacity: 100%;
+    text-decoration: underline ;
+    
+  }
+
+  a.mx-auto.mt-auto{
+    color: #1d1d1d;
+  }
