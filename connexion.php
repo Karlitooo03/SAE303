@@ -1,16 +1,16 @@
 <?php
-require_once "poo_database.php";
+//require_once "poo_database.php";
 require_once "poo_models.php";
 // Classe représentant l'utilisateur
 class User {
     private $username;
     private $password;
-    private $mail; 
+     
 
     public function __construct($username, $password) {
         $this->username = $username;
         $this->password = $password;
-        $this->mail = $mail;
+        
     }
 
     public function verifyPassword($inputPassword) {
@@ -29,8 +29,8 @@ class AuthController {
     }
 
 
-    public function login($mail, $mdp, $nom) {
-        $query = "SELECT mail, mdp, nom FROM adherents WHERE mail = :mail";
+    public function login($mail, $mdp) {
+        $query = "SELECT mail, mdp FROM adherents WHERE mail = :mail";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':mail', $mail);
         $stmt->execute();
@@ -51,24 +51,24 @@ class AuthController {
    
 session_start();
 // Processus de connexion
-/*try {
+try {
     $db = new PDO("mysql:host=localhost;dbname=database", "root", "");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
 }
-*/
+
 $authController = new AuthController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
     $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
+    $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
 
-    echo "Nom d'utilisateur: $nom<br>";
+    //echo "Nom d'utilisateur: $nom<br>";
     echo "Mot de passe: $mdp<br>";
     echo "Email : $mail<br>";
     
-    if ($authController->login($nom, $mdp)) {
+    if ($authController->login($mail, $mdp)) {
         //echo "Authentification réussie ! Bienvenue, $nom.";
         $_SESSION['nom'] = $nom;
 
