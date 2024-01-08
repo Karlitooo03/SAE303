@@ -1,13 +1,16 @@
 <?php
+require_once "poo_database.php";
 require_once "poo_models.php";
 // Classe représentant l'utilisateur
 class User {
     private $username;
-    private $password; 
+    private $password;
+    private $mail; 
 
     public function __construct($username, $password) {
         $this->username = $username;
         $this->password = $password;
+        $this->mail = $mail;
     }
 
     public function verifyPassword($inputPassword) {
@@ -26,16 +29,16 @@ class AuthController {
     }
 
 
-    public function login($nom, $mdp) {
-        $query = "SELECT nom, mdp FROM adherents WHERE nom = :nom";
+    public function login($mail, $mdp, $nom) {
+        $query = "SELECT mail, mdp, nom FROM adherents WHERE mail = :mail";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':mail', $mail);
         $stmt->execute();
 
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($userData) {
-            $user = new User($userData['nom'], $userData['mdp']);
+            $user = new User($userData['mail'], $userData['mdp']);
 
             if ($userData['mdp'] === $mdp) {
                 return true; // Authentification réussie
@@ -48,13 +51,13 @@ class AuthController {
    
 session_start();
 // Processus de connexion
-try {
+/*try {
     $db = new PDO("mysql:host=localhost;dbname=database", "root", "");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données: " . $e->getMessage());
 }
-
+*/
 $authController = new AuthController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -63,12 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo "Nom d'utilisateur: $nom<br>";
     echo "Mot de passe: $mdp<br>";
+    echo "Email : $mail<br>";
     
     if ($authController->login($nom, $mdp)) {
         //echo "Authentification réussie ! Bienvenue, $nom.";
         $_SESSION['nom'] = $nom;
 
-        header('Location: index.php');
+        header('Location: index.html');
         exit();
     } else {
         echo "Échec de l'authentification. Vérifiez vos informations de connexion.";
