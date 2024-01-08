@@ -137,7 +137,7 @@
                       <label for="lastName" class="form-label"></label>
                       <div class="col-10">
                         <label for="email" class="form-label">Situation familiale</label> <br>
-                        <select class="form-control" id="Situation">
+                        <select class="form-control" id="Situation" name="situation">
                           <option value="">--Sélectionez votre Situation--</option>
                           <option name="marié">Marié.e</option>
                           <option name="pacsé">Pacsé.e</option>
@@ -149,7 +149,7 @@
                       <label for="lastName" class="form-label"></label>
                       <div class="col-10">
                         <label class="form-label">Nombre de personnes à charge</label> <br>
-                        <select class="form-control" id="Situation">
+                        <select class="form-control" id="nbrpersonnesCharge" name="charge">
                           <option value="">--Sélectionez le nombre de personnes--</option>
                           <option value="0">0</option>
                           <option value="1">1</option>
@@ -163,15 +163,17 @@
               </div>
               
                   </div>
-                </form>
+                
                   <br>
                   <button class="w-40 btn btn-primary btn-lg mx-auto mt-auto" type="submit">S'INSCRIRE</button>
+                </form>
        <br>
+
                   <a class=" mx-auto mt-auto" href="connexion.html"><span class=" connect ">Se connecter</span></a>
                   </div>
 
 
-                  <div id="preloader"></div>
+                  <!-- <div id="preloader"></div> -->
                   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
