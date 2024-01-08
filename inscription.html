@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <title>Document</title>
+    <title>INSCRIPTION</title>
 </head>
 <body>
     <link href="assets/css/inscription.css" rel="stylesheet">
@@ -37,7 +37,7 @@
           <div class="row">
             <div class="col">
            
-              <form class="needs-validation " novalidate>
+              <form action="" class="needs-validation " novalidate>
                 <div class="form-group custom-margin-left">
                 <div class=" form-check-inline">
                   <input class="form-check-input" type="radio" id="mOption" name="gender">
@@ -92,7 +92,7 @@
                   </div>
                   </div>
                 </div>
-                  </form>
+                  
                   
                 </div>
                 <div class="col">
@@ -131,7 +131,7 @@
                         <label  class="form-label"></label>
                         <input type="password" class="form-control" id="cfrmdp" placeholder="confirmez_votre_mot_de_passe">
                         <div class="invalid-feedback">
-                          Veuillez confirmer votre mot de passe valide.
+                          Veuillez saisir un mot de passe valide.
                         </div>
                       </div>
                       <label for="lastName" class="form-label"></label>
@@ -139,11 +139,10 @@
                         <label for="email" class="form-label">Situation familiale</label> <br>
                         <select class="form-control" id="Situation">
                           <option value="">--Sélectionez votre Situation--</option>
-                          <option value="dog">Célibataire</option>
-                          <option value="cat">Marié</option>
-                          <option value="hamster">Pacsé</option>
-                          <option value="parrot">Divorcé</option>
-                          <option value="spider">Ne pas renseigner</option>
+                          <option name="marié">Marié.e</option>
+                          <option name="pacsé">Pacsé.e</option>
+                          <option name="divorcé">Divorcé.e</option>
+                          <option name="celib">Célibataire</option>
                          
                         </select>
                       </div>
@@ -152,11 +151,11 @@
                         <label class="form-label">Nombre de personnes à charge</label> <br>
                         <select class="form-control" id="Situation">
                           <option value="">--Sélectionez le nombre de personnes--</option>
-                          <option value="dog">Célibataire</option>
-                          <option value="cat">Marié</option>
-                          <option value="hamster">Pacsé</option>
-                          <option value="parrot">Divorcé</option>
-                          <option value="spider">Ne pas renseigner</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
                          
                         </select>
                       </div>
@@ -164,6 +163,7 @@
               </div>
               
                   </div>
+                </form>
                   <br>
                   <button class="w-40 btn btn-primary btn-lg mx-auto mt-auto" type="submit">S'INSCRIRE</button>
        <br>
