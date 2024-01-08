@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Simulation de la connexion réussie
   // Remplace cette partie par la logique de connexion réelle
-  let isLoggedIn = true;
+  let isLoggedIn = false;
 
   // Ajoute un événement de clic au lien "Déconnexion"
   let logoutLink = document.getElementById("logoutLink");

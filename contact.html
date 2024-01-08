@@ -23,14 +23,15 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto" href="#">Tarifs</a></li>
+                <li><a class="nav-link scrollto" href="tarifs.html">Tarifs</a></li>
                 <li><a class="nav-link scrollto" href="galerie.html">Galerie</a></li>
                 <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown" id="accountDropdown">
+                    <a href="connexion.html" class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
                     <ul class="dropdown-menu" id="dropdownMenu">
-                        <li><a href="#">Connexion</a></li>
-                        <li><a href="#">Inscription</a></li>
+                        <li><a href="#" id="reservationLink">Réservation</a></li>
+                        <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
+                        <li><a href="#" id="logoutLink">Déconnexion</a></li>
                     </ul>
                 </li>
             </ul>

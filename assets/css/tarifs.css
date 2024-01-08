@@ -92,6 +92,41 @@ body {
   }
   
 
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+  }
+  
+  #preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #3E44C0;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: animate-preloader 1s linear infinite;
+  }
+  
+  @keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   #header {
     transition: all 0.5s;
     background: #fff;
@@ -183,6 +218,37 @@ body {
   .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
     color: #fff;
     background: #606060;
+  }
+  
+  .dropdown-menu {
+    display: none;
+  }
+  
+  .dropdown.show .dropdown-menu {
+    display: block;
+  }
+  
+  #dropdownMenu {
+    width: 200px;
+    padding: 10px; 
+  }
+  
+  #dropdownMenu li {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    #dropdownMenu {
+        width: 95%; 
+        max-height: 100%;
+        height: 90%;
+    }
+  
+    #dropdownMenu li {
+        width: 100%; 
+        text-align: center;
+        margin-bottom: 5px; 
+    }
   }
   
   
