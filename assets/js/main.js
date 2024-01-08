@@ -236,3 +236,75 @@ const executeCodes = () => {
 };
 
 window.addEventListener('load', executeCodes);
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  let dropdownToggle = document.getElementById("dropdownToggle");
+  let dropdownMenu = document.getElementById("dropdownMenu");
+  let isHovered = false;
+
+  dropdownToggle.addEventListener("mouseover", function () {
+      isHovered = true;
+      setTimeout(function () {
+          if (isHovered) {
+              dropdownMenu.style.display = "block";
+          }
+      }, 200);
+  });
+
+  dropdownToggle.addEventListener("mouseout", function () {
+      isHovered = false;
+      setTimeout(function () {
+          if (!isHovered) {
+              dropdownMenu.style.display = "none";
+          }
+      }, 500);
+  });
+
+  dropdownMenu.addEventListener("mouseover", function () {
+      isHovered = true;
+      dropdownMenu.style.display = "block";
+  });
+
+  dropdownMenu.addEventListener("mouseout", function () {
+      isHovered = false;
+      dropdownMenu.style.display = "none";
+  });
+
+  // Ajoute une gestion du cache pour éviter l'affichage initial
+  window.addEventListener("load", function () {
+      dropdownMenu.style.display = "none";
+  });
+
+  // Simulation de la connexion réussie
+  // Remplace cette partie par la logique de connexion réelle
+  let isLoggedIn = true;
+
+  // Ajoute un événement de clic au lien "Déconnexion"
+  let logoutLink = document.getElementById("logoutLink");
+  logoutLink.addEventListener("click", function () {
+      isLoggedIn = false;
+      updateDropdown();
+  });
+
+  // Fonction pour mettre à jour le contenu du dropdown menu
+  function updateDropdown() {
+      let reservationLink = document.getElementById("reservationLink");
+      let profileLink = document.getElementById("profileLink");
+
+      if (isLoggedIn) {
+          // Utilisateur connecté
+          reservationLink.textContent = "Réservation";
+          profileLink.textContent = "Modifier mon profil";
+          logoutLink.style.display = "block";
+      } else {
+          // Utilisateur non connecté
+          reservationLink.textContent = "Connexion";
+          profileLink.textContent = "Inscription";
+          logoutLink.style.display = "none";
+      }
+  }
+
+  // Appelle la fonction pour mettre à jour le dropdown menu
+  updateDropdown();
+});
