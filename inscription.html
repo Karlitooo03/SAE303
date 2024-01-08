@@ -51,15 +51,15 @@
                 <div class="row g-3">
                   <div class="col-sm-5">
                     
-                    <input type="text" class="form-control" id="prenom" placeholder="Prénom" value="" required>
+                    <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom" value="" required>
                     <div class="invalid-feedback">
-                      Veuillez saisir un mot de passe valide.
+                      Veuillez saisir un prenom valide.
                     </div>
                   </div>
       
                   <div class="col-sm-5">
                     
-                    <input type="text" class="form-control" id="nom" placeholder="Nom" value="" required>
+                    <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" value="" required>
                     <div class="invalid-feedback">
                       Veuillez saisir un nom valide.
                     </div>
@@ -69,7 +69,7 @@
                     <label for="username" class="form-label">Date de naissance</label>
                     <div class="input-group has-validation">
                       
-                      <input type="date" class="form-control" id="ddn" placeholder="JJ/MM/AAAA" required>
+                      <input type="date" class="form-control" name="datedenaissance" id="ddn" placeholder="JJ/MM/AAAA" required>
                     <div class="invalid-feedback">
                       Veuillez saisir une date de naissance valide.
                       </div>
@@ -78,14 +78,14 @@
       
                   <div class="col-10">
                     <label  class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <input type="email" class="form-control" name="mail" id="email" placeholder="you@example.com">
                     <div class="invalid-feedback">
                       Veuillez saisir une adresse mail valide.
                     </div>
                   </div>
                   <div class="col-10">
                     <label  class="form-label">Téléphone</label>
-                    <input type="tel" class="form-control" id="tel" placeholder="06 30 27 12 31">
+                    <input type="tel" class="form-control" name="tel" id="tel" placeholder="06 30 27 12 31">
                     <div class="invalid-feedback">
                       Veuillez saisir un numéro valide.
                     </div>
@@ -98,7 +98,7 @@
                 <div class="col">
                   <div class="col-10">
                       <label  class="form-label">Adresse</label>
-                      <input type="text" class="form-control" id="adresse" placeholder="32 avenue Mandela">
+                      <input type="text" class="form-control" name="adresse" id="adresse" placeholder="32 avenue Mandela">
                       <div class="invalid-feedback">
                         Veuillez saisir une adresse valide.
                       </div>
@@ -108,21 +108,21 @@
                           <label for="firstName" class="form-label"></label>
                           <input type="number" class="form-control" id="cp" placeholder="code postal" value="" required>
                           <div class="invalid-feedback">
-                            Un prénom valide est requis.
+                            Veuillez saisir un code postale valide.
                           </div>
                       </div>
                       <div class="col-sm-5">
                           <label for="lastName" class="form-label"></label>
                           <input type="text" class="form-control" id="ville" placeholder="ville" value="" required>
                           <div class="invalid-feedback">
-                            Un nom valide est requis.
+                            Veuillez saisir une ville valide.
                           </div>
                       </div>
                       <label for="lastName" class="form-label"></label>
                       <div class="col-10">
                         
                         <label  class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="mdp" placeholder="votre_mot_de_passe">
+                        <input type="password" class="form-control" name="mdp" id="mdp" placeholder="votre_mot_de_passe">
                         <div class="invalid-feedback">
                           Veuillez saisir un mot de passe valide.
                         </div>
