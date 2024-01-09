@@ -3,15 +3,14 @@
 <?php
 session_start();
 ?>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accueil</title>
   <link href="" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -35,8 +34,7 @@ session_start();
           <li><a class="nav-link scrollto" href="galerie.html">Galerie</a></li>
           <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
           <li class="dropdown" id="accountDropdown">
-            <a href="connexion.html" class="nav-link scrollto" id="dropdownToggle">Compte <i
-                class="bi bi-chevron-down"></i></a>
+            <a href="connexion.html" class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
             <ul class="dropdown-menu" id="dropdownMenu">
               <li><a href="#" id="reservationLink">Réservation</a></li>
               <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
@@ -86,6 +84,7 @@ session_start();
             <p class="description">Vous avez toujours rêvé de voler ? Devenez pilotes ou instructeur à votre tour grâce
               à nos formations. Nous mettons à votre disposition des professeur qualifiée qui seront vous formez sur les
               bases, ainsi que tous le matériel nécessaires à votre formation.</p>
+
           </div>
         </div>
 
@@ -112,6 +111,32 @@ session_start();
         </div>
       </div>
     </div>
+    <?php
+    $apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Frotey-lès-Lure&appid=7fdb48df5993f3acec244d1c2652170d";
+
+    $response = file_get_contents($apiUrl);
+
+    if ($response === false) {
+      die('Erreur lors de la requête vers l\'API.');
+    }
+
+    // Convertir  JSON 
+    $data = json_decode($response, true);
+
+    // Afficher les données 
+    echo  $data['name'] . '<br>';
+
+
+    //Convertir en celcius
+    $celcius =  number_format($data['main']['temp'] - 273.15, 0);
+    echo 'Température: ' . $celcius . ' °C<br>';
+    //echo 'Description: ' . $data['weather'][0]['description'] . '<br>';
+
+    // Afficher l'image qui correspond au temps
+    $iconCode = $data['weather'][0]['icon'];
+    $apiIcon = "http://openweathermap.org/img/wn/" . $iconCode . "@2x.png";
+    echo '<img src="' . $apiIcon . '" alt="Image icon temps"><br>';
+    ?>
   </section>
 
 
@@ -161,32 +186,28 @@ session_start();
         <div class="row justify-content-end">
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
               <p>Lorem Ipsum</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
               <p>Lorem Ipsum</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
               <p>Lorem Ipsum</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
               <p>Lorem Ipsum</p>
             </div>
           </div>
@@ -353,8 +374,7 @@ session_start();
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-            data-aos-delay="200">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box iconbox">
               <h4><a href="">8 et 9 Mars 2024</a></h4>
               <img class="img-evenement" src="ressources/images/event-5.jpg" alt="" srcset="">
@@ -362,8 +382,7 @@ session_start();
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box iconbox">
               <h4><a href="">1er au 3 Juin 2024</a></h4>
               <img class="img-evenement" src="ressources/images/event-3.jpg" alt="" srcset="">
@@ -458,8 +477,7 @@ session_start();
   </div>
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
