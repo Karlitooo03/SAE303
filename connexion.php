@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //echo "Authentification réussie ! Bienvenue, $nom.";
         $_SESSION['nom'] = $nom;
 
-        header('Location: index.html');
+        header('Location: index.php');
         exit();
     } else {
         echo "Échec de l'authentification. Vérifiez vos informations de connexion.";
