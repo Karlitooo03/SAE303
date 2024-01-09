@@ -26,7 +26,7 @@ session_start();
 <body>
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo"><svg id="Calque_1" class="img-fluid"data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.45 292.25"><defs><style>.cls-1{fill:none;stroke:#1d1e1d;stroke-miterlimit:10;stroke-width:7px;}.cls-2{font-size:106px;fill:#1d1e1d;font-family:Helvetica;}</style></defs><path class="cls-1" d="M437.72,135.78,428.53,163c-8.23,11.1-12.6-5-16-10.35l-20.54-32.86a4.37,4.37,0,0,1,3.57-7.07l54.45,3a24.3,24.3,0,0,0,8.21-1l20-5.85a8.43,8.43,0,0,1,10.5,6L504.18,172c15.65,68.89,21,9.84,21.27-3l1.7-83.23a18.45,18.45,0,0,1,6.93-14.06l49.56-39.31c23.46-18.61,7.22-40-19.58-22.22L515.41,42.23A26.52,26.52,0,0,1,499,43.51l-85.08-20.6c-12.75-3.09-68.28-14.07-8.32,21.43L456,73.43A5.65,5.65,0,0,1,457.33,82l-12.15,13.9c-67.79,53-180.27,124.06-332.27,150A701.69,701.69,0,0,1,0,255.84"/><text class="cls-2" transform="translate(34.96 242.29) rotate(-5.68)">A</text><text class="cls-2" transform="translate(110.13 234.52) rotate(-12.79)">C</text><text class="cls-2" transform="translate(188.56 216.15) rotate(-18.92)">F</text><text class="cls-2" transform="matrix(0.91, -0.41, 0.41, 0.91, 252.89, 193.78)">2</text><text class="cls-2" transform="matrix(0.87, -0.49, 0.49, 0.87, 309.45, 168.19)">L</text></svg></a>
+      <a href="index.php" class="logo"><svg id="Calque_1" class="img-fluid" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.45 292.25"><defs><style>.cls-1{fill:none;stroke:#1d1e1d;stroke-miterlimit:10;stroke-width:7px;}.cls-2{font-size:106px;fill:#1d1e1d;font-family:Helvetica;}</style></defs><path class="cls-1" d="M437.72,135.78,428.53,163c-8.23,11.1-12.6-5-16-10.35l-20.54-32.86a4.37,4.37,0,0,1,3.57-7.07l54.45,3a24.3,24.3,0,0,0,8.21-1l20-5.85a8.43,8.43,0,0,1,10.5,6L504.18,172c15.65,68.89,21,9.84,21.27-3l1.7-83.23a18.45,18.45,0,0,1,6.93-14.06l49.56-39.31c23.46-18.61,7.22-40-19.58-22.22L515.41,42.23A26.52,26.52,0,0,1,499,43.51l-85.08-20.6c-12.75-3.09-68.28-14.07-8.32,21.43L456,73.43A5.65,5.65,0,0,1,457.33,82l-12.15,13.9c-67.79,53-180.27,124.06-332.27,150A701.69,701.69,0,0,1,0,255.84"/><text class="cls-2" transform="translate(34.96 242.29) rotate(-5.68)">A</text><text class="cls-2" transform="translate(110.13 234.52) rotate(-12.79)">C</text><text class="cls-2" transform="translate(188.56 216.15) rotate(-18.92)">F</text><text class="cls-2" transform="matrix(0.91, -0.41, 0.41, 0.91, 252.89, 193.78)">2</text><text class="cls-2" transform="matrix(0.87, -0.49, 0.49, 0.87, 309.45, 168.19)">L</text></svg></a>
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -111,33 +111,34 @@ session_start();
         </div>
       </div>
     </div>
-    <?php
-    $apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Frotey-lès-Lure&appid=7fdb48df5993f3acec244d1c2652170d";
 
-    $response = file_get_contents($apiUrl);
-
-    if ($response === false) {
-      die('Erreur lors de la requête vers l\'API.');
-    }
-
-    // Convertir  JSON 
-    $data = json_decode($response, true);
-
-    // Afficher les données 
-    echo  $data['name'] . '<br>';
-
-
-    //Convertir en celcius
-    $celcius =  number_format($data['main']['temp'] - 273.15, 0);
-    echo 'Température: ' . $celcius . ' °C<br>';
-    //echo 'Description: ' . $data['weather'][0]['description'] . '<br>';
-
-    // Afficher l'image qui correspond au temps
-    $iconCode = $data['weather'][0]['icon'];
-    $apiIcon = "http://openweathermap.org/img/wn/" . $iconCode . "@2x.png";
-    echo '<img src="' . $apiIcon . '" alt="Image icon temps"><br>';
-    ?>
   </section>
+
+  <!-- API météo -->
+  <?php
+  $apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Frotey-lès-Lure&appid=7fdb48df5993f3acec244d1c2652170d";
+
+  $response = file_get_contents($apiUrl);
+
+  if ($response === false) {
+    die('Erreur lors de la requête vers l \'API.');
+  }
+  $data = json_decode($response, true);
+  $celcius =  number_format($data['main']['temp'] - 273.15, 0);
+  $iconCode = $data['weather'][0]['icon'];
+  $humidite = $data['main']['humidity'];
+  $vent = $data['wind']['speed']
+  ?>
+  <div class="text-center col-md-5 col-lg-3 mb-3 mb-lg-0 shadow p-3 mb-5 bg-white rounded">
+    Météo à<h1 class="fs-2"> <?= $data['name'] ?></h1>
+    <div class="fs-5">Température : <?= $celcius ?>°C </div>
+    <div class="fs-5">Description : <?= $data['weather'][0]['description'] ?> </div>
+    <div class="fs-5">Humidité : <?= $data['main']['humidity'] ?> g/m3</div>
+    <div class="fs-5">Vent : <?= $data['wind']['speed'] ?> km/h</div>
+
+    <img src="http://openweathermap.org/img/wn/<?= $iconCode ?>@2x.png" alt="Image icon temps"><br>
+
+  </div>
 
 
 
@@ -398,7 +399,7 @@ session_start();
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <p class="col-md-4 mb-0 text-body-secondary">© 2023 ACF2L, Inc</p>
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Accueil</a></li>
+        <li class="nav-item"><a href="index.php" class="nav-link px-2 text-body-secondary">Accueil</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Compte</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Tarifs</a></li>
         <li class="nav-item"><a href="galerie.html" class="nav-link px-2 text-body-secondary">Galerie</a></li>
