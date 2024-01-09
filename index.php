@@ -26,7 +26,7 @@ session_start();
 <body>
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo"><img src="ressources/images/logo303.svg" class="img-fluid"></a>
+      <a href="index.php" class="logo"><img src="ressources/images/logo303.svg" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -129,12 +129,12 @@ session_start();
   $humidite = $data['main']['humidity'];
   $vent = $data['wind']['speed']
   ?>
-  <div class="row d-flex justify-content-center align-items-center">
+  <div class="text-center col-md-5 col-lg-3 mb-3 mb-lg-0 shadow p-3 mb-5 bg-white rounded">
     <h1><?= $data['name'] ?></h1>
-    <div>Température : <?= $celcius ?>°C </div><br>
-    <div>Description : <?= $data['weather'][0]['description'] ?></div>
-    <div>Humidité : <?= $data['main']['humidity'] ?></div>
-    <div>Vent : <?= $data['wind']['speed'] ?></div>
+    <div>Température : <?= $celcius ?>°C </div>
+    <div>Description : <?= $data['weather'][0]['description'] ?> </div>
+    <div>Humidité : <?= $data['main']['humidity'] ?> g/m3</div>
+    <div>Vent : <?= $data['wind']['speed'] ?> km/h</div>
 
     <img src="http://openweathermap.org/img/wn/<?= $iconCode ?>@2x.png" alt="Image icon temps"><br>
 
@@ -468,7 +468,7 @@ session_start();
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <p class="col-md-4 mb-0 text-body-secondary">© 2023 ACF2L, Inc</p>
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Accueil</a></li>
+        <li class="nav-item"><a href="index.php" class="nav-link px-2 text-body-secondary">Accueil</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Compte</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Tarifs</a></li>
         <li class="nav-item"><a href="galerie.html" class="nav-link px-2 text-body-secondary">Galerie</a></li>
