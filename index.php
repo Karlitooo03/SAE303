@@ -121,26 +121,26 @@ session_start();
   $response = file_get_contents($apiUrl);
 
   if ($response === false) {
-    die('Erreur lors de la requête vers l\'API.');
+    die('Erreur lors de la requête vers l \'API.');
   }
-
-  // Convertir  JSON 
   $data = json_decode($response, true);
-
-  // Afficher les données 
-  echo  $data['name'] . '<br>';
-
-
-  //Convertir en celcius
   $celcius =  number_format($data['main']['temp'] - 273.15, 0);
-  echo 'Température: ' . $celcius . ' °C<br>';
-  //echo 'Description: ' . $data['weather'][0]['description'] . '<br>';
-
-  // Afficher l'image qui correspond au temps
   $iconCode = $data['weather'][0]['icon'];
-  $apiIcon = "http://openweathermap.org/img/wn/" . $iconCode . "@2x.png";
-  echo '<img src="' . $apiIcon . '" alt="Image icon temps"><br>';
+  $humidite = $data['main']['humidity'];
+  $vent = $data['wind']['speed']
   ?>
+  <div class="row d-flex justify-content-center align-items-center">
+    <h1><?= $data['name'] ?></h1>
+    <div>Température : <?= $celcius ?>°C </div><br>
+    <div>Description : <?= $data['weather'][0]['description'] ?></div>
+    <div>Humidité : <?= $data['main']['humidity'] ?></div>
+    <div>Vent : <?= $data['wind']['speed'] ?></div>
+
+    <img src="http://openweathermap.org/img/wn/<?= $iconCode ?>@2x.png" alt="Image icon temps"><br>
+
+  </div>
+
+
 
   <main id="main">
     <section id="about" class="about">
