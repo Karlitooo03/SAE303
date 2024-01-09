@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-sessin start();
+session_start();
 ?>
 <head>
   <meta charset="UTF-8">
