@@ -22,6 +22,39 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+#Calque_1{
+
+  
+  width: 8vw;
+ 
+}
+.cls-1{
+  stroke-dasharray:1400;
+  stroke-dashoffset: 1400;
+  animation: trait 4s ease-out forwards;
+}
+
+.cls-2 {
+  opacity: 0;
+  animation: text 2s ease forwards;
+  animation-delay: 2s; 
+}
+
+@keyframes text {
+to {
+  opacity: 1;
+}
+}
+
+@keyframes trait{
+to{
+ fill-opacity: 1;
+ stroke-dashoffset: 0 ;
+}
+} 
+
+
+
 
 .back-to-top {
   position: fixed;
@@ -52,7 +85,6 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
   opacity: 1;
 }
-
 
 
 
@@ -106,9 +138,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
-
-
 #header {
   transition: all 0.5s;
   background: #fff;
@@ -122,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
 }
 
-#header .logo {
+#header #Calque_1 {
   font-size: 28px;
   margin: 0;
   padding: 0;
@@ -132,16 +161,16 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Exo 2', sans-serif;
 }
 
-#header .logo a {
+#header #Calque_1 a {
   color: #16507b;
 }
 
-#header .logo img {
+#header #Calque_1 img {
   max-height: 40px;
 }
 
 @media (max-width: 992px) {
-  #header .logo {
+  #header #Calque_1 {
     font-size: 28px;
   }
 }
