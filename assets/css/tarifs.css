@@ -1,15 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap');
+
 body {
     background-color: #f8f9fa;
     background-image: url("/SAE303/assets/img/hero-bg.jpg");
-  }
-
-  .container {
-    text-align: center;
-    margin-top: 50px;
+    overflow-y: hidden;
+    font-family: 'Exo 2', sans-serif;
+    color: #444444;
   }
 
   h2 {
     color: #007bff;
+    margin-top:10%;
   }
 
   .card {
@@ -20,6 +21,7 @@ body {
     margin-bottom: 20px;
     height: 350px;
     transition: transform 0.2s;
+    margin-bottom: 30%;
   }
 
   .card:hover {
@@ -41,6 +43,9 @@ body {
   .card-text {
     color: #555;
   }
+
+
+
 
 
   a {
