@@ -19,6 +19,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Exo 2', sans-serif;
 }
 
+.api {
+  margin: auto;
+  width: 20%;
+  padding: 2% 5%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+  opacity: 0.5; /* Opacité initiale */
+  transition: opacity 0.3s ease-in-out; /* Animation de transition */
+}
+
+.api:hover {
+  opacity: 1; /* Opacité au survol */
+}
 
 
 
