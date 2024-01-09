@@ -69,7 +69,7 @@ try {
     $charge = isset($_POST["charge"]) ? $_POST["charge"] : ''; // Assurez-vous que la clé "charge" existe
     $tel = $_POST["tel"];
 
-    $champs = "nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel";
+    $champs = "civilite, nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel, codepostal, ville";
     $valeurs = "'$nom', '$prenom', '$mail', '$datedenaissance', '$mdp', '$adresse', '$situation', '$charge', '$tel'";
 
     $tab1->insertData($champs, $valeurs);
