@@ -13,10 +13,11 @@ class User {
         
     }
 
-    public function verifyPassword($inputPassword) {
-        // Vérifie si le mot de passe fourni correspond au mot de passe de l'utilisateur
-        return password_verify($inputPassword, $this->password);
+    public function verifyPassword($inputPassword, $hashedPassword) {
+        // Vérifie si le mot de passe fourni correspond au mot de passe haché de l'utilisateur
+        return password_verify($inputPassword, $hashedPassword);
     }
+    
 }
 
 // Classe gérant le processus d'authentification
@@ -40,12 +41,17 @@ class AuthController {
         if ($userData) {
             $user = new User($userData['mail'], $userData['mdp']);
 
-            if ($userData['mdp'] === $mdp) {
-                return true; // Authentification réussie
+            if ($user->verifyPassword($mdp, $userData['mdp'])) {
+                //echo "Mot de passe correct";
+                return true;
+                //Authentification réussie
             }
+            
         }
 
-        return false; // Authentification échouée
+        return false;
+        //var_dump($mdp, $userData['mdp']);
+        //echo "Mot de passe incorrect"; // Authentification échouée
     }
 }
    
@@ -65,17 +71,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
 
     //echo "Nom d'utilisateur: $nom<br>";
-    echo "Mot de passe: $mdp<br>";
-    echo "Email : $mail<br>";
+   // echo "Mot de passe: $mdp<br>";
+    //echo "Email : $mail<br>";
     
     if ($authController->login($mail, $mdp)) {
-        //echo "Authentification réussie ! Bienvenue, $nom.";
-        $_SESSION['nom'] = $nom;
+        //echo "Authentification réussie ! Bienvenue, $mail.";
+        $_SESSION['mail'] = $mail;
 
         header('Location: index.php');
         exit();
     } else {
         echo "Échec de l'authentification. Vérifiez vos informations de connexion.";
+        
     }
 }
 ?>

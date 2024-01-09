@@ -63,19 +63,22 @@ try {
     $prenom = $_POST["prenom"];
     $mail = $_POST["mail"];
     $datedenaissance = $_POST["datedenaissance"];
-    $mdp = $_POST["mdp"];
+    $mdp = password_hash($_POST["mdp"],PASSWORD_DEFAULT) ;
     $adresse = $_POST["adresse"];
     $situation = $_POST["situation"];
     $charge = isset($_POST["charge"]) ? $_POST["charge"] : ''; // Assurez-vous que la clé "charge" existe
     $tel = $_POST["tel"];
+    $civilite = $_POST["civilite"];
+    $codepostal = $_POST["codepostal"];
+    $ville = $_POST["ville"];
 
     $champs = "civilite, nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel, codepostal, ville";
-    $valeurs = "'$nom', '$prenom', '$mail', '$datedenaissance', '$mdp', '$adresse', '$situation', '$charge', '$tel'";
+    $valeurs = "'$civilite','$nom', '$prenom', '$mail', '$datedenaissance', '$mdp', '$adresse', '$situation', '$charge', '$tel','$codepostal','$ville'";
 
     $tab1->insertData($champs, $valeurs);
 
 	// Afficher le tableau des adhérents
-    $colonnesAdherents = ['prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'mdp'];
+    $colonnesAdherents = ['civilite','prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'mdp','codepostal','ville'];
     afficherTable('adherents', $colonnesAdherents);
 	
 	// Afficher le tableau des réservations
