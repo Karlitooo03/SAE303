@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="assets/css/reservation.css" rel="stylesheet">
+    <title>Page de de reservation</title>
+</head>
+
+<body>
+    <!-- formulaire nous donnant la possibilité de choisir une ou plusieurs activités-->
+    <div class="container">
+        <div class="contenu">
+            <div class="explicatif">
+                <h1 class="fs-1">Choisissez les activités qui vous intéressent</h1>
+                <p class="input-group-text my-2 "><input type="checkbox"> <label class="p-1"> Baptème de l'air
+                    </label></p>
+                <p class="input-group-text my-2 "><input type="checkbox"> <label class="p-1"> Formation
+                    </label>
+                </p>
+                <p class="input-group-text my-2 "><input type="checkbox"> <label class="p-1"> Montage des
+                        ULM</label></p>
+                <p class="input-group-text my-2 "><input type="checkbox"> <label class="p-1"> Autogire</label>
+                </p>
+                <p class="input-group-text my-2 "><input type="checkbox"> <label class="p-1"> Multiaxe</label>
+                </p>
+                <p class="input-group-text my-2 "><input type="checkbox"> <label class="p-1">
+                        Pendulaire</label>
+                </p>
+
+            </div>
+            <div class="droite">
+                <div class="entete"><span class="text">RÉSERVATION</span></div>
+                <div class="carte d-flex flex-column justify-content-between ">
+
+                    <form class="needs-validation" novalidate action="connexion.php" method="post">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adresse e-mail</label>
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com" required
+                                name="mail">
+                            <div class="invalid-feedback">
+                                Veuillez entrer une adresse e-mail valide.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="password" placeholder="Mot de passe"
+                                required name="mdp">
+                            <div class="invalid-feedback">
+                                Veuillez entrer votre mot de passe.
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block mt-3" type="submit">Réserver</button>
+
+                    </form>
+                    <br>
+                    <a class=" mx-auto mt-auto" href="inscription.html"><span class=" connect ">S'inscrire</span></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- <div id="preloader"></div> -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
