@@ -34,7 +34,19 @@ body, html {
     margin-top: 8%;
     margin-right: 28%; 
   }
+
+  .checkbox{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  label{
+    margin-left: 5px;
+    margin-bottom: 2px;
+  }
   
+
   
   .droite {
     display: flex;
@@ -76,9 +88,19 @@ body, html {
     text-decoration: underline ;
     
   }
-
+/*personalisation des liens*/
   a.mx-auto.mt-auto{
     color: #1d1d1d;
+  }
+
+  a {
+    color: #606060;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #3E44C0;
+    text-decoration: none;
   }
 
   #preloader {
