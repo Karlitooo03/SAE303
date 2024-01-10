@@ -66,7 +66,7 @@ session_start();
     </div>
   </header>
 
-  
+
   <div class="wrapper">
     <div class="title-box">
       <i class="bx bx-cookie"></i>
@@ -149,13 +149,14 @@ session_start();
   $vent = $data['wind']['speed']
   ?>
   <div class="api text-center col-md-5 col-lg-3 mb-3 mb-lg-0 shadow p-3 mb-5 bg-white rounded" style="position: fixed; bottom: 0; left: 10px;">
-    Météo à<h1 class="fs-2"> <?= $data['name'] ?></h1>
-    <div class="fs-5">Température : <?= $celcius ?>°C </div>
-    <div class="fs-5">Description : <?= $data['weather'][0]['description'] ?> </div>
-    <div class="fs-5">Humidité : <?= $data['main']['humidity'] ?> g/m3</div>
-    <div class="fs-5">Vent : <?= $data['wind']['speed'] ?> km/h</div>
+    <h1 class="fs-2"> <?= $data['name'] ?></h1>
+    <img id="icone" src="http://openweathermap.org/img/wn/<?= $iconCode ?>@2x.png" alt="Image icon temps">
+    <div class="fs-2"><?= $celcius ?>°C </div>
+    <div class="fs-6">Description : <?= $data['weather'][0]['description'] ?> </div>
+    <div class="fs-6">Humidité : <?= $data['main']['humidity'] ?> g/m3</div>
+    <div class="fs-6">Vent : <?= $data['wind']['speed'] ?> km/h</div>
 
-    <img src="http://openweathermap.org/img/wn/<?= $iconCode ?>@2x.png" alt="Image icon temps"><br>
+
 
   </div>
 
