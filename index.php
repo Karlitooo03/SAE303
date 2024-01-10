@@ -90,7 +90,7 @@ echo 'Bonjour ' . htmlspecialchars($_COOKIE["name"]) . '!';
       <p>
         Ce site web utilise des cookies pour vous aider à avoir une expérience de navigation supérieure et plus
         pertinente sur le site web.
-        <a href="#"> Plus d'info...</a>
+        <!--<a href="#"> Plus d'info...</a>-->
       </p>
     </div>
     <div class="buttons">
