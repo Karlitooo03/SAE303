@@ -39,6 +39,10 @@ try {
 
     $tab1->insertData($champs, $valeurs);
 
+    //Il redirige vers page.php
+    header('Location:index.php');
+    //Il arrête le script et n'exécute pas le code qui pourrais se trouver en dessous
+    exit;
     // Afficher le tableau des adhérents
     $colonnesAdherents = ['civilite', 'prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'mdp', 'codepostal', 'ville'];
     afficherTable('adherents', $colonnesAdherents);
@@ -55,16 +59,16 @@ try {
     $colonnesAvions = ['id', 'nom'];
     afficherTable('avions', $colonnesAvions);
     */
+    
 } catch (PDOException $e) {
     die($e->getMessage());
 }
 
 
-//Il redirige vers page.php
-header('Location:index.php');
+
 
 //Il arrête le script et n'exécute pas le code qui pourrais se trouver en dessous
-die();
+//die();
 
 
 
