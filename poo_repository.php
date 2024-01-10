@@ -53,6 +53,14 @@ class Repository extends Model {
 		$this->db->exec($sql);	
 	
 	}
+	//Modification
+	public function updateData($mail,$champ, $valeurs, ){
+        $sql = "UPDATE {$this->table} SET $champ = $valeurs WHERE mail = ?";
+        
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$mail]);
+    }
 	
 	public function delete(int $id){
 		return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
