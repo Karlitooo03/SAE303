@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+//commencer la session de l'utilisateur
 session_start();
+// Example
+// Setting a cookie
+setcookie("usertoken", "noice", time() + 20 * 24 * 60 * 60);
+// 20 days = 20*24*60*60 seconds
+
+setcookie("usertoken", "", time() - 3600);
+
+echo 'Bonjour ' . htmlspecialchars($_COOKIE["name"]) . '!';
+
 ?>
+
+
+
+
 
 <head>
   <meta charset="UTF-8">
