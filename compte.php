@@ -11,8 +11,8 @@
     
 
 // Inclure votre classe Repository et initialiser la connexion à la base de données
-
-$repository = new Repository($modele->getTable());;
+$modele = new Model('adherents');
+$repository = new Repository($modele->getTable());
 
 //  Données à mettre à jour
     $nom = $_POST["nom"];
@@ -125,16 +125,21 @@ if ($updatedUser) {
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Paramètre du compte</h4>
                         </div>
+                        <form action="" method="post">
+
                         <div class="row mt-2">
                             <div class="col-md-6"><label class="labels">Prénom</label><input type="text"
                                     class="form-control" placeholder="Prénom" value="" disabled></div>
+
                             <div class="col-md-6"><label class="labels">NOM</label><input type="text"
                                     class="form-control" value="" placeholder="NOM" disabled></div>
+
                             <div class="col-md-6"><label class="labels">Date de naissance</label><input
                                     type="datedenaissance"  name="datedenaissance" class="form-control" value="" placeholder="date"></div>
+
                             <div class="col-md-6"><label class="labels">Sexe</label><br><input type="radio" id="homme"
-                                    name="drone" value="Homme" checked /><label for="homme" id="h">Homme</label><input
-                                    type="radio" id="femme" name="drone" value="Femme" /><label for="Femme"
+                                    name="civilite" value="Monsieur" checked /><label for="homme" id="h">Homme</label><input
+                                    type="radio" id="femme" name="civilite" value="Madame" /><label for="Femme"
                                     id="f">Femme</label></div>
 
                         </div>
@@ -195,6 +200,7 @@ if ($updatedUser) {
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
                             type="submit">Enregistrer</button></div>
                 </div>
+                </form>
             </div>
         </div>
         </div>
