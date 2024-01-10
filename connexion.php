@@ -2,35 +2,39 @@
 //require_once "poo_database.php";
 require_once "poo_models.php";
 // Classe représentant l'utilisateur
-class User {
+class User
+{
     private $username;
     private $password;
-     
 
-    public function __construct($username, $password) {
+
+    public function __construct($username, $password)
+    {
         $this->username = $username;
         $this->password = $password;
-        
     }
 
-    public function verifyPassword($inputPassword, $hashedPassword) {
+    public function verifyPassword($inputPassword, $hashedPassword)
+    {
         // Vérifie si le mot de passe fourni correspond au mot de passe haché de l'utilisateur
         return password_verify($inputPassword, $hashedPassword);
     }
-    
 }
 
 // Classe gérant le processus d'authentification
-class AuthController {
-    
+class AuthController
+{
+
     private $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(PDO $db)
+    {
         $this->db = $db;
     }
 
 
-    public function login($mail, $mdp) {
+    public function login($mail, $mdp)
+    {
         $query = "SELECT mail, mdp FROM adherents WHERE mail = :mail";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':mail', $mail);
@@ -46,7 +50,6 @@ class AuthController {
                 return true;
                 //Authentification réussie
             }
-            
         }
 
         return false;
@@ -54,7 +57,7 @@ class AuthController {
         //echo "Mot de passe incorrect"; // Authentification échouée
     }
 }
-   
+
 session_start();
 // Processus de connexion
 try {
@@ -71,27 +74,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
 
     //echo "Nom d'utilisateur: $nom<br>";
-   // echo "Mot de passe: $mdp<br>";
+    // echo "Mot de passe: $mdp<br>";
     //echo "Email : $mail<br>";
-    
+
     if ($authController->login($mail, $mdp)) {
         //echo "Authentification réussie ! Bienvenue, $mail.";
         $_SESSION['mail'] = $mail;
-        
-         
 
-  // Set the time to expire to be 86400 seconds from now (aka in 24 hours)
-  //expires is given as a Unix timestamp - seconds since epoch 
-  $expires = time() + 86400;
 
-  // Set the value.
-  setcookie("nom", $nom, $expires);
+
+        // Set the time to expire to be 86400 seconds from now (aka in 24 hours)
+        //expires is given as a Unix timestamp - seconds since epoch 
+        $expires = time() + 86400;
+
+        // Set the value.
+        setcookie("nom", $nom, $expires);
 
         header('Location: index.php');
         exit();
     } else {
         echo "Échec de l'authentification. Vérifiez vos informations de connexion.";
-        
     }
 }
-?>
