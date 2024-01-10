@@ -1,35 +1,35 @@
 <?php
-    session_start();
-    require_once "poo_models.php";
-    require_once "poo_repository.php";
-     
-         if (!isset($_SESSION['mail'])){
-             header('Location: index.php');
-             exit;
-    }
+session_start();
+require_once "poo_models.php";
+require_once "poo_repository.php";
 
-    
+if (!isset($_SESSION['mail'])) {
+    header('Location: index.php');
+    exit;
+}
+
+
 
 // Inclure votre classe Repository et initialiser la connexion à la base de données
 $modele = new Model('adherents');
 $repository = new Repository($modele->getTable());
 
 //  Données à mettre à jour
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-    $mail = $_POST["mail"];
-    $datedenaissance = $_POST["datedenaissance"];
-    $mdp = password_hash($_POST["mdp"],PASSWORD_DEFAULT) ;
-    $adresse = $_POST["adresse"];
-    $situation = $_POST["situation"];
-    $charge = isset($_POST["charge"]) ? $_POST["charge"] : ''; // Assurez-vous que la clé "charge" existe
-    $tel = $_POST["tel"];
-    $civilite = $_POST["civilite"];
-    $codepostal = $_POST["codepostal"];
-    $ville = $_POST["ville"];
+$nom = $_SESSION["nom"];
+$prenom = $_SESSION["prenom"];
+$mail = $_SESSION["mail"];
+$datedenaissance = $_SESSION["datedenaissance"];
+$mdp = password_hash($_SESSION["mdp"], PASSWORD_DEFAULT);
+$adresse = $_SESSION["adresse"];
+$situation = $_SESSION["situation"];
+$charge = isset($_SESSION["charge"]) ? $_SESSION["charge"] : ''; // Assurez-vous que la clé "charge" existe
+$tel = $_SESSION["tel"];
+$civilite = $_SESSION["civilite"];
+$codepostal = $_SESSION["codepostal"];
+$ville = $_SESSION["ville"];
 
-    $newValue = "civilite, nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel, codepostal, ville";
-    $toUpdate= "'$civilite','$nom', '$prenom', '$mail', '$datedenaissance', '$mdp', '$adresse', '$situation', '$charge', '$tel','$codepostal','$ville'";
+$newValue = "civilite, nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel, codepostal, ville";
+$toUpdate = "'$civilite','$nom', '$prenom', '$mail', '$datedenaissance', '$mdp', '$adresse', '$situation', '$charge', '$tel','$codepostal','$ville'";
 // Appel de la méthode updateData
 $repository->updateData("mail", $newValue, $toUpdate);
 
@@ -43,20 +43,18 @@ if ($updatedUser) {
     echo "Échec de la mise à jour.";
 }
 
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte</title>
     <link href="" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -70,55 +68,52 @@ if ($updatedUser) {
 <body>
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
-          <a href="index.php" class="logo"><svg id="Calque_1" class="img-fluid" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.45 292.25">
-              <defs>
-                <style>
-                  .cls-1 {
-                    fill: none;
-                    stroke: #1d1e1d;
-                    stroke-miterlimit: 10;
-                    stroke-width: 7px;
-                  }
-    
-                  .cls-2 {
-                    font-size: 106px;
-                    fill: #1d1e1d;
-                    font-family: Helvetica;
-                  }
-                </style>
-              </defs>
-              <path class="cls-1" d="M437.72,135.78,428.53,163c-8.23,11.1-12.6-5-16-10.35l-20.54-32.86a4.37,4.37,0,0,1,3.57-7.07l54.45,3a24.3,24.3,0,0,0,8.21-1l20-5.85a8.43,8.43,0,0,1,10.5,6L504.18,172c15.65,68.89,21,9.84,21.27-3l1.7-83.23a18.45,18.45,0,0,1,6.93-14.06l49.56-39.31c23.46-18.61,7.22-40-19.58-22.22L515.41,42.23A26.52,26.52,0,0,1,499,43.51l-85.08-20.6c-12.75-3.09-68.28-14.07-8.32,21.43L456,73.43A5.65,5.65,0,0,1,457.33,82l-12.15,13.9c-67.79,53-180.27,124.06-332.27,150A701.69,701.69,0,0,1,0,255.84" /><text class="cls-2" transform="translate(34.96 242.29) rotate(-5.68)">A</text><text class="cls-2" transform="translate(110.13 234.52) rotate(-12.79)">C</text><text class="cls-2" transform="translate(188.56 216.15) rotate(-18.92)">F</text><text class="cls-2" transform="matrix(0.91, -0.41, 0.41, 0.91, 252.89, 193.78)">2</text><text class="cls-2" transform="matrix(0.87, -0.49, 0.49, 0.87, 309.45, 168.19)">L</text>
-            </svg></a>
-    
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li><a class="nav-link scrollto" href="tarifs.html">Tarifs</a></li>
-              <li><a class="nav-link scrollto" href="galerie.html">Galerie</a></li>
-              <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
-              <li class="dropdown" id="accountDropdown">
-                <a href="connexion.html" class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
-                <ul class="dropdown-menu" id="dropdownMenu">
-                  <li><a href="#" id="reservationLink">Réservation</a></li>
-                  <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
-                  <li><a href="#" id="logoutLink">Déconnexion</a></li>
+            <a href="index.php" class="logo"><svg id="Calque_1" class="img-fluid" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.45 292.25">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                                stroke: #1d1e1d;
+                                stroke-miterlimit: 10;
+                                stroke-width: 7px;
+                            }
+
+                            .cls-2 {
+                                font-size: 106px;
+                                fill: #1d1e1d;
+                                font-family: Helvetica;
+                            }
+                        </style>
+                    </defs>
+                    <path class="cls-1" d="M437.72,135.78,428.53,163c-8.23,11.1-12.6-5-16-10.35l-20.54-32.86a4.37,4.37,0,0,1,3.57-7.07l54.45,3a24.3,24.3,0,0,0,8.21-1l20-5.85a8.43,8.43,0,0,1,10.5,6L504.18,172c15.65,68.89,21,9.84,21.27-3l1.7-83.23a18.45,18.45,0,0,1,6.93-14.06l49.56-39.31c23.46-18.61,7.22-40-19.58-22.22L515.41,42.23A26.52,26.52,0,0,1,499,43.51l-85.08-20.6c-12.75-3.09-68.28-14.07-8.32,21.43L456,73.43A5.65,5.65,0,0,1,457.33,82l-12.15,13.9c-67.79,53-180.27,124.06-332.27,150A701.69,701.69,0,0,1,0,255.84" /><text class="cls-2" transform="translate(34.96 242.29) rotate(-5.68)">A</text><text class="cls-2" transform="translate(110.13 234.52) rotate(-12.79)">C</text><text class="cls-2" transform="translate(188.56 216.15) rotate(-18.92)">F</text><text class="cls-2" transform="matrix(0.91, -0.41, 0.41, 0.91, 252.89, 193.78)">2</text><text class="cls-2" transform="matrix(0.87, -0.49, 0.49, 0.87, 309.45, 168.19)">L</text>
+                </svg></a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="tarifs.html">Tarifs</a></li>
+                    <li><a class="nav-link scrollto" href="galerie.html">Galerie</a></li>
+                    <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
+                    <li class="dropdown" id="accountDropdown">
+                        <a href="connexion.html" class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                            <li><a href="#" id="reservationLink">Réservation</a></li>
+                            <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
+                            <li><a href="#" id="logoutLink">Déconnexion</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav>
-    
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+
         </div>
-      </header>
+    </header>
 
 
     <main id="main">
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
-                            class="rounded-circle mt-5" width="150px" src="ressources/images/b.jpg"><span
-                            class="font-weight-bold">PRENOM</span><span
-                            class="text-black-50">exemple@exemple.com</span><span> </span></div>
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="ressources/images/b.jpg"><span class="font-weight-bold">PRENOM</span><span class="text-black-50">exemple@exemple.com</span><span> </span></div>
                 </div>
                 <div class="col-md-5 border-right">
                     <div class="p-3 py-5">
@@ -127,78 +122,65 @@ if ($updatedUser) {
                         </div>
                         <form action="" method="post">
 
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Prénom</label><input type="text"
-                                    class="form-control" placeholder="Prénom" value="" disabled></div>
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" placeholder="Prénom" value="" disabled></div>
 
-                            <div class="col-md-6"><label class="labels">NOM</label><input type="text"
-                                    class="form-control" value="" placeholder="NOM" disabled></div>
+                                <div class="col-md-6"><label class="labels">NOM</label><input type="text" class="form-control" value="" placeholder="NOM" disabled></div>
 
-                            <div class="col-md-6"><label class="labels">Date de naissance</label><input
-                                    type="datedenaissance"  name="datedenaissance" class="form-control" value="" placeholder="date"></div>
+                                <div class="col-md-6"><label class="labels">Date de naissance</label><input type="datedenaissance" name="datedenaissance" class="form-control" value="" placeholder="date"></div>
 
-                            <div class="col-md-6"><label class="labels">Sexe</label><br><input type="radio" id="homme"
-                                    name="civilite" value="Monsieur" checked /><label for="homme" id="h">Homme</label><input
-                                    type="radio" id="femme" name="civilite" value="Madame" /><label for="Femme"
-                                    id="f">Femme</label></div>
+                                <div class="col-md-6"><label class="labels">Sexe</label><br><input type="radio" id="homme" name="civilite" value="Monsieur" checked /><label for="homme" id="h">Homme</label><input type="radio" id="femme" name="civilite" value="Madame" /><label for="Femme" id="f">Femme</label></div>
 
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">N° Téléphone</label>
-                            <input type="text"name="tel" class="form-control" placeholder="N° Téléphone" value=""></div>
-
-                            <div class="col-md-12"><label class="labels">Adresse</label><input type="text"
-                                    name="adresse" class="form-control" placeholder="Adresse" value=""></div>
-
-                            <div class="col-md-12"><label class="labels">Code Postal</label><input type="text"
-                                    class="form-control" name="codepostal" placeholder="Code Postal" value=""></div>
-
-                            <div class="col-md-12"><label class="labels">Ville</label><input type="text"
-                                    class="form-control" ,name="ville" placeholder="Ville" value=""></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels" for="situation">Situation familiale :</label>
-                                <select name="situation" id="situation-select">
-                                    <option value="">--Choisissez une option--</option>
-                                    <option value="Célibataire">Célibataire</option>
-                                    <option value="Divorcé(e)">Divorcé(e)</option>
-                                    <option value="Veuf(ve)">Veuf(ve)</option>
-                                    <option value="Marié(e)">Marié(e)</option>
-                                    <option value="Pacsé">Pacsé(e)</option>
-                                </select>
                             </div>
-                            <div class="col-md-6"><label class="labels" for="charge">Nombre de personnes à charge
-                                    :</label>
-                                <select name="charge" id="personne-select">
-                                    <option value="">--Choisissez une option--</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                </select>
+                            <div class="row mt-3">
+                                <div class="col-md-12"><label class="labels">N° Téléphone</label>
+                                    <input type="text" name="tel" class="form-control" placeholder="N° Téléphone" value="">
+                                </div>
+
+                                <div class="col-md-12"><label class="labels">Adresse</label><input type="text" name="adresse" class="form-control" placeholder="Adresse" value=""></div>
+
+                                <div class="col-md-12"><label class="labels">Code Postal</label><input type="text" class="form-control" name="codepostal" placeholder="Code Postal" value=""></div>
+
+                                <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" ,name="ville" placeholder="Ville" value=""></div>
                             </div>
-                        </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label class="labels" for="situation">Situation familiale :</label>
+                                    <select name="situation" id="situation-select">
+                                        <option value="">--Choisissez une option--</option>
+                                        <option value="Célibataire">Célibataire</option>
+                                        <option value="Divorcé(e)">Divorcé(e)</option>
+                                        <option value="Veuf(ve)">Veuf(ve)</option>
+                                        <option value="Marié(e)">Marié(e)</option>
+                                        <option value="Pacsé">Pacsé(e)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6"><label class="labels" for="charge">Nombre de personnes à charge
+                                        :</label>
+                                    <select name="charge" id="personne-select">
+                                        <option value="">--Choisissez une option--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center experience"><span>Modifier</span>
                         </div><br>
-                        <div class="col-md-12"><label class="labels">Email</label><input type="maild" name="mail"
-                                class="form-control" placeholder="Votre mail" value=""></div><br>
-                        <div class="col-md-12"><label class="labels">Mot de passe</label><input type="password"
-                                name="mdp" class="form-control" placeholder="Mot de passe" value=""></div>
-                        <div class="col-md-12"><label class="labels">Confirmation du mot de passe</label><input
-                                type="password" class="form-control" placeholder="Confirmation du mot de passe"
-                                value=""></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="maild" name="mail" class="form-control" placeholder="Votre mail" value=""></div><br>
+                        <div class="col-md-12"><label class="labels">Mot de passe</label><input type="password" name="mdp" class="form-control" placeholder="Mot de passe" value=""></div>
+                        <div class="col-md-12"><label class="labels">Confirmation du mot de passe</label><input type="password" class="form-control" placeholder="Confirmation du mot de passe" value=""></div>
                     </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
-                            type="submit">Enregistrer</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Enregistrer</button></div>
                 </div>
                 </form>
             </div>
@@ -221,8 +203,7 @@ if ($updatedUser) {
     </div>
 
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
