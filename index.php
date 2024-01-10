@@ -6,20 +6,22 @@
 session_start();
 // Example
 // Setting a cookie
-setcookie("cookieprenom", "noice", time() + 20 * 24 * 60 * 60);
+
 // 20 days = 20*24*60*60 seconds
 
-echo 'Bonjour ' . htmlspecialchars($_COOKIE["prenom"]) . '!';
+
 
 // if "Name" exists, do something:
-if (isset($_COOKIE["prenom"])) {
-  $name = $_COOKIE["prenom"];
+if (isset($_COOKIE["mail"])) {
+  $name = $_COOKIE["mail"];
   echo "<h1>Hello $name, it is nice to see you again.</h1>";
+  echo 'Bonjour ' . htmlspecialchars($_COOKIE["mail"]) . '!';
+  $message = htmlspecialchars($_COOKIE["mail"]) . '!';
+  echo "<script>alert('$message');</script>";
 }
 
 
-$message = htmlspecialchars($_COOKIE["prenom"]) . '!';
-echo "<script>alert('$message');</script>";
+
 
 
 ?>

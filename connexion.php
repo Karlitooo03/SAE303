@@ -81,16 +81,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //echo "Authentification réussie ! Bienvenue, $mail.";
         $_SESSION['mail'] = $mail;
 
-
-
         // Set the time to expire to be 86400 seconds from now (aka in 24 hours)
         //expires is given as a Unix timestamp - seconds since epoch 
         $expires = time() + 86400;
-
+        $mail = $_COOKIE['mail'];
         // Set the value.
-        setcookie("nom", $nom, $expires);
+        setcookie("cookiemail", $mail, $expires);
 
+        $_COOKIE["mail"] = $name;
         header('Location: index.php');
+
+
         exit();
     } else {
         echo "Échec de l'authentification. Vérifiez vos informations de connexion.";
