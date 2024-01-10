@@ -10,12 +10,12 @@ setcookie("usertoken", "noice", time() + 20 * 24 * 60 * 60);
 
 setcookie("usertoken", "", time() - 3600);
 
-echo 'Bonjour ' . htmlspecialchars($_COOKIE["name"]) . '!';
+echo 'Bonjour ' . htmlspecialchars($_COOKIE["nom"]) . '!';
 
 
 // if "Name" exists, do something:
-if (isset($_COOKIE["username"])) {
-  $name = $_COOKIE["username"];
+if (isset($_COOKIE["nom"])) {
+  $name = $_COOKIE["nom"];
   echo "<h1>Hello $name, it is nice to see you again.</h1>";
 }
 ?>
