@@ -77,6 +77,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($authController->login($mail, $mdp)) {
         //echo "Authentification réussie ! Bienvenue, $mail.";
         $_SESSION['mail'] = $mail;
+        
+         
+
+  // Set the time to expire to be 86400 seconds from now (aka in 24 hours)
+  //expires is given as a Unix timestamp - seconds since epoch 
+  $expires = time() + 86400;
+
+  // Set the value.
+  setcookie("nom", $nom, $expires);
 
         header('Location: index.php');
         exit();
