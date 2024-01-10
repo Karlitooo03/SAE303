@@ -1,47 +1,33 @@
 <?php
 session_start();
-require_once "poo_models.php";
+
 require_once "poo_repository.php";
 
 if (!isset($_SESSION['mail'])) {
     header('Location: index.php');
     exit;
+} else {
+    $newValue = $champs;
+    $toUpdate = $valeurs;
+    // Appel de la méthode updateData
+    $repository->updateData("mail", $newValue, $toUpdate);
+
+    // Vous pouvez également ajouter une vérification pour voir si la mise à jour a réussi
+    // Exemple de vérification
+    $updatedUser = $repository->findBy(["mail" => $toUpdate]);
 }
-
-
-
-// Inclure votre classe Repository et initialiser la connexion à la base de données
-$modele = new Model('adherents');
-$repository = new Repository($modele->getTable());
-
-//  Données à mettre à jour
-$nom = $_SESSION["nom"];
-$prenom = $_SESSION["prenom"];
-$mail = $_SESSION["mail"];
-$datedenaissance = $_SESSION["datedenaissance"];
-$mdp = password_hash($_SESSION["mdp"], PASSWORD_DEFAULT);
-$adresse = $_SESSION["adresse"];
-$situation = $_SESSION["situation"];
-$charge = isset($_SESSION["charge"]) ? $_SESSION["charge"] : ''; // Assurez-vous que la clé "charge" existe
-$tel = $_SESSION["tel"];
-$civilite = $_SESSION["civilite"];
-$codepostal = $_SESSION["codepostal"];
-$ville = $_SESSION["ville"];
-
-$newValue = "civilite, nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel, codepostal, ville";
-$toUpdate = "'$civilite','$nom', '$prenom', '$mail', '$datedenaissance', '$mdp', '$adresse', '$situation', '$charge', '$tel','$codepostal','$ville'";
-// Appel de la méthode updateData
-$repository->updateData("mail", $newValue, $toUpdate);
-
-// Vous pouvez également ajouter une vérification pour voir si la mise à jour a réussi
-// Exemple de vérification
-$updatedUser = $repository->findBy(["mail" => $toUpdate]);
 
 if ($updatedUser) {
     echo "Mise à jour réussie. ";
 } else {
     echo "Échec de la mise à jour.";
 }
+
+
+
+
+
+
 
 ?>
 
@@ -66,6 +52,15 @@ if ($updatedUser) {
 </head>
 
 <body>
+
+    <tr>
+        <td><?php echo $nom["id"]; ?></td>
+        <td><?php echo $prenom["first_name"]; ?></td>
+        <td><?php echo $adresse["last_name"]; ?></td>
+        <td><a href="update-process.php?id=<?php echo $row["id"]; ?>">Update</a></td>
+    </tr>
+
+
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo"><svg id="Calque_1" class="img-fluid" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.45 292.25">
@@ -120,10 +115,10 @@ if ($updatedUser) {
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Paramètre du compte</h4>
                         </div>
-                        <form action="" method="post">
+                        <form action="" method="$_SESSION">
 
                             <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" placeholder="Prénom" value="" disabled></div>
+                                <div class="col-md-6"><label class="labels">Prénom</label> <input type="text" class="form-control" placeholder="Prénom" value="" disabled></div>
 
                                 <div class="col-md-6"><label class="labels">NOM</label><input type="text" class="form-control" value="" placeholder="NOM" disabled></div>
 
