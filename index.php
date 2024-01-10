@@ -5,17 +5,14 @@
 session_start();
 // Example
 // Setting a cookie
-setcookie("usertoken", "noice", time() + 20 * 24 * 60 * 60);
+setcookie("cookieprenom", "noice", time() + 20 * 24 * 60 * 60);
 // 20 days = 20*24*60*60 seconds
 
-setcookie("usertoken", "", time() - 3600);
-
-echo 'Bonjour ' . htmlspecialchars($_COOKIE["name"]) . '!';
-
+echo 'Bonjour ' . htmlspecialchars($_COOKIE["prenom"]) . '!';
 
 // if "Name" exists, do something:
-if (isset($_COOKIE["username"])) {
-  $name = $_COOKIE["username"];
+if (isset($_COOKIE["prenom"])) {
+  $name = $_COOKIE["prenom"];
   echo "<h1>Hello $name, it is nice to see you again.</h1>";
 }
 ?>
