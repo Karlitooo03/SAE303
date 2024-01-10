@@ -1,6 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    session_start();
+    require_once "poo_models.php";
+    require_once "poo_repository.php";
+     
+         if (!isset($_SESSION['mail'])){
+             header('Location: index.php');
+             exit;
+    }
 
+    
+
+// Inclure votre classe Repository et initialiser la connexion à la base de données
+
+$repository = new Repository($modele->getTable());;
+
+//  Données à mettre à jour
+    $nom = $_POST["nom"];
+    $prenom = $_POST["prenom"];
+    $mail = $_POST["mail"];
+    $datedenaissance = $_POST["datedenaissance"];
+    $mdp = password_hash($_POST["mdp"],PASSWORD_DEFAULT) ;
+    $adresse = $_POST["adresse"];
+    $situation = $_POST["situation"];
+    $charge = isset($_POST["charge"]) ? $_POST["charge"] : ''; // Assurez-vous que la clé "charge" existe
+    $tel = $_POST["tel"];
+    $civilite = $_POST["civilite"];
+    $codepostal = $_POST["codepostal"];
+    $ville = $_POST["ville"];
+
+    $newValue = "civilite, nom, prenom, mail, datedenaissance, mdp, adresse, situation, charge, tel, codepostal, ville";
+    $toUpdate= "'$civilite','$nom', '$prenom', '$mail', '$datedenaissance', '$mdp', '$adresse', '$situation', '$charge', '$tel','$codepostal','$ville'";
+// Appel de la méthode updateData
+$repository->updateData("mail", $newValue, $toUpdate);
+
+// Vous pouvez également ajouter une vérification pour voir si la mise à jour a réussi
+// Exemple de vérification
+$updatedUser = $repository->findBy(["mail" => $toUpdate]);
+
+if ($updatedUser) {
+    echo "Mise à jour réussie. ";
+} else {
+    echo "Échec de la mise à jour.";
+}
+
+    ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,7 +131,7 @@
                             <div class="col-md-6"><label class="labels">NOM</label><input type="text"
                                     class="form-control" value="" placeholder="NOM" disabled></div>
                             <div class="col-md-6"><label class="labels">Date de naissance</label><input
-                                    type="datedenaissance" class="form-control" value="" placeholder="date"></div>
+                                    type="datedenaissance"  name="datedenaissance" class="form-control" value="" placeholder="date"></div>
                             <div class="col-md-6"><label class="labels">Sexe</label><br><input type="radio" id="homme"
                                     name="drone" value="Homme" checked /><label for="homme" id="h">Homme</label><input
                                     type="radio" id="femme" name="drone" value="Femme" /><label for="Femme"
@@ -92,21 +139,23 @@
 
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">N° Téléphone</label><input type="text"
-                                    name="tel" class="form-control" placeholder="N° Téléphone" value=""></div>
+                            <div class="col-md-12"><label class="labels">N° Téléphone</label>
+                            <input type="text"name="tel" class="form-control" placeholder="N° Téléphone" value=""></div>
+
                             <div class="col-md-12"><label class="labels">Adresse</label><input type="text"
                                     name="adresse" class="form-control" placeholder="Adresse" value=""></div>
+
                             <div class="col-md-12"><label class="labels">Code Postal</label><input type="text"
-                                    class="form-control" placeholder="Code Postal" value=""></div>
+                                    class="form-control" name="codepostal" placeholder="Code Postal" value=""></div>
+
                             <div class="col-md-12"><label class="labels">Ville</label><input type="text"
-                                    class="form-control" placeholder="Ville" value=""></div>
+                                    class="form-control" ,name="ville" placeholder="Ville" value=""></div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6"><label class="labels" for="situation">Situation familiale :</label>
                                 <select name="situation" id="situation-select">
                                     <option value="">--Choisissez une option--</option>
                                     <option value="Célibataire">Célibataire</option>
-                                    <option value="Séparé(e)">Séparé(e)</option>
                                     <option value="Divorcé(e)">Divorcé(e)</option>
                                     <option value="Veuf(ve)">Veuf(ve)</option>
                                     <option value="Marié(e)">Marié(e)</option>
@@ -144,7 +193,7 @@
                                 value=""></div>
                     </div>
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
-                            type="button">Enregistrer</button></div>
+                            type="submit">Enregistrer</button></div>
                 </div>
             </div>
         </div>
