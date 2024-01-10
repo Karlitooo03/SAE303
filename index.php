@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+//commencer la session de l'utilisateur
 session_start();
+// Example
+// Setting a cookie
+setcookie("usertoken", "noice", time() + 20 * 24 * 60 * 60);
+// 20 days = 20*24*60*60 seconds
+
+setcookie("usertoken", "", time() - 3600);
+
+echo 'Bonjour ' . htmlspecialchars($_COOKIE["name"]) . '!';
+
+
+// if "Name" exists, do something:
+if (isset($_COOKIE["username"])) {
+  $name = $_COOKIE["username"];
+  echo "<h1>Hello $name, it is nice to see you again.</h1>";
+}
 ?>
+
+
+
+
 
 <head>
   <meta charset="UTF-8">
@@ -76,7 +96,7 @@ session_start();
       <p>
         Ce site web utilise des cookies pour vous aider à avoir une expérience de navigation supérieure et plus
         pertinente sur le site web.
-        <a href="#"> Plus d'info...</a>
+        <!--<a href="#"> Plus d'info...</a>-->
       </p>
     </div>
     <div class="buttons">
