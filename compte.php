@@ -115,7 +115,7 @@ if ($updatedUser) {
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Paramètre du compte</h4>
                         </div>
-                        <form action="" method="$_SESSION">
+                        <form action="" method="SESSION">
 
                             <div class="row mt-2">
                                 <div class="col-md-6"><label class="labels">Prénom</label> <input type="text" class="form-control" placeholder="Prénom" value="" disabled></div>

@@ -287,6 +287,9 @@ document.addEventListener("DOMContentLoaded", function () {
       updateDropdown();
   });
 
+  let connexionLink = document.getElementById("connexionLink");
+  let inscriptionLink = document.getElementById("inscriptionLink");
+
   // Fonction pour mettre à jour le contenu du dropdown menu
   function updateDropdown() {
       let reservationLink = document.getElementById("reservationLink");
@@ -299,8 +302,8 @@ document.addEventListener("DOMContentLoaded", function () {
           logoutLink.style.display = "block";
       } else {
           // Utilisateur non connecté
-          reservationLink.textContent = "Connexion";
-          profileLink.textContent = "Inscription";
+          connexionLink.textContent = "Connexion";
+          inscriptionLink.textContent = "Inscription";
           logoutLink.style.display = "none";
       }
   }

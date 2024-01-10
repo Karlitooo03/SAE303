@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <?php
 //commencer la session de l'utilisateur
 session_start();
@@ -15,6 +16,12 @@ if (isset($_COOKIE["prenom"])) {
   $name = $_COOKIE["prenom"];
   echo "<h1>Hello $name, it is nice to see you again.</h1>";
 }
+
+
+$message = htmlspecialchars($_COOKIE["prenom"]) . '!';
+echo "<script>alert('$message');</script>";
+
+
 ?>
 
 
@@ -69,11 +76,17 @@ if (isset($_COOKIE["prenom"])) {
           <li><a class="nav-link scrollto" href="galerie.html">Galerie</a></li>
           <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
           <li class="dropdown" id="accountDropdown">
-            <a href="connexion.html" class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
+            <a class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
             <ul class="dropdown-menu" id="dropdownMenu">
-              <li><a href="#" id="reservationLink">Réservation</a></li>
+              <li><a href="connexion.html" id="reservationLink">Connexion</a></li>
+              <li><a href="inscription.html" id="inscriptionLink">Inscription</a></li>
+              <!--
+              <li><a href="reservation.html" id="reservationLink">Réservation</a></li>
               <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
-              <li><a href="#" id="logoutLink">Déconnexion</a></li>
+              <li><a href="index.php" id="logoutLink">Déconnexion</a></li>-->
+
+
+
             </ul>
           </li>
         </ul>
