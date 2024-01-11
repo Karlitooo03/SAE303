@@ -29,10 +29,12 @@ class AuthController
 
     public function login($mail, $mdp)
     {
-        $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal,  FROM adherents WHERE mail = :mail";
+        $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal  FROM adherents WHERE mail = :mail";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':mail', $mail);
         $stmt->execute();
+        
+        
 
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -79,6 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
 
     if ($authController->login($mail, $mdp)) {
+
+        if ($mail=="admin@admin.fr")
+        {
+            header('Location: membres.php');
+        }
+        else
         header('Location: index.php');
         exit();
     } else {
