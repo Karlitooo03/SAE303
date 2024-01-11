@@ -34,7 +34,7 @@ $datedenaissance = $_SESSION['datedenaissance'];
 $adresse = $_SESSION['adresse'];
 $ville = $_SESSION['ville'];
 $codepostal = $_SESSION['codepostal'];
-$situation = $_SESSION['situation'];
+
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +125,7 @@ $situation = $_SESSION['situation'];
 
                                 <div class="col-md-6"><label class="labels">Date de naissance</label><input type="date" name="datedenaissance" class="form-control" value="<?php echo htmlspecialchars($datedenaissance); ?>" ></div>
 
-                                <div class="col-md-6"><label class="labels">Sexe</label><br><input type="radio" id="homme" name="civilite" value="Monsieur" checked /><label for="homme" id="h">Homme</label><input type="radio" id="femme" name="civilite" value="Madame" /><label for="Femme" id="f">Femme</label></div>
+                                <div class="col-md-6"><label class="labels">Sexe</label><br><input type="radio" id="homme" name="civilite" value="Monsieur"  /><label for="homme" id="h">Homme</label><input type="radio" id="femme" name="civilite" value="Madame" /><label for="Femme" id="f">Femme</label></div>
 
                             </div>
                             <div class="row mt-3">
@@ -141,8 +141,8 @@ $situation = $_SESSION['situation'];
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6"><label class="labels" for="situation">Situation familiale :</label>
-                                    <select name="situation" value="<?php echo htmlspecialchars($situation); ?>" id="situation-select">
-                                        <option value="<?php echo htmlspecialchars($situation); ?>">--Choisissez une option--</option>
+                                    <select name="situation"  id="situation-select">
+                                        <option value="">--Choisissez une option--</option>
                                         <option value="Célibataire">Célibataire</option>
                                         <option value="Divorcé(e)">Divorcé(e)</option>
                                         <option value="Veuf(ve)">Veuf(ve)</option>
@@ -173,7 +173,7 @@ $situation = $_SESSION['situation'];
                         <div class="d-flex justify-content-between align-items-center experience"><span>Modifier</span>
                         </div><br>
                         <div class="col-md-12"><label class="labels">Email</label><input type="maild" name="mail" class="form-control" placeholder="Votre mail" value="<?php echo htmlspecialchars($mail); ?>"></div><br>
-                        <div class="col-md-12"><label class="labels">Mot de passe</label><input type="password" name="mdp" class="form-control" placeholder="Mot de passe" value=""></div>
+                        <div class="col-md-12"><label class="labels">Mot de passe</label><input type="password" name="mdp" class="form-control" placeholder="Entrez votre mot de passe" value=""></div>
                         <div class="col-md-12"><label class="labels">Confirmation du mot de passe</label><input type="password" class="form-control" placeholder="Confirmation du mot de passe" value=""></div>
                     </div>
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Enregistrer</button></div>

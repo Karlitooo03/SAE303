@@ -29,7 +29,7 @@ class AuthController
 
     public function login($mail, $mdp)
     {
-        $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal, situation FROM adherents WHERE mail = :mail";
+        $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal,  FROM adherents WHERE mail = :mail";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':mail', $mail);
         $stmt->execute();
@@ -52,7 +52,8 @@ class AuthController
                 $_SESSION['adresse'] = $userData['adresse'];
                 $_SESSION['ville'] = $userData['ville'];
                 $_SESSION['codepostal'] = $userData['codepostal'];
-                $_SESSION['situation'] = $userData['situation'];
+                
+                
                 
                 return true;
             }
