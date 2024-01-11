@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-//commencer la session de l'utilisateur
 session_start();
+
+//commencer la session de l'utilisateur
+
 // Example
 // Setting a cookie
 
@@ -12,6 +11,7 @@ session_start();
 
 
 // if "Name" exists, do something:
+  /*
 if (isset($_COOKIE["mail"])) {
   $name = $_COOKIE["mail"];
   echo "<h1>Hello $name, it is nice to see you again.</h1>";
@@ -20,11 +20,15 @@ if (isset($_COOKIE["mail"])) {
   echo "<script>alert('$message');</script>";
 }
 
-
+*/
 
 
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+
 
 
 
@@ -85,9 +89,7 @@ if (isset($_COOKIE["mail"])) {
 
               <li><a href="reservation.html" id="reservationLink">Réservation</a></li>
               <li><a href="compte.php" id="profileLink">Modifier mon profil</a></li>
-              <li><a href="index.php" id="logoutLink">Déconnexion<?php
-                                                                  session_destroy();
-                                                                  ?></a></li>
+              <li><a href="index.php" id="logoutLink">Déconnexion</a></li>
 
 
 
