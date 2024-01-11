@@ -1,12 +1,10 @@
 <?php
-//require_once "poo_database.php";
 require_once "poo_models.php";
-// Classe représentant l'utilisateur
+
 class User
 {
     private $username;
     private $password;
-
 
     public function __construct($username, $password)
     {
@@ -16,15 +14,12 @@ class User
 
     public function verifyPassword($inputPassword, $hashedPassword)
     {
-        // Vérifie si le mot de passe fourni correspond au mot de passe haché de l'utilisateur
         return password_verify($inputPassword, $hashedPassword);
     }
 }
 
-// Classe gérant le processus d'authentification
 class AuthController
 {
-
     private $db;
 
     public function __construct(PDO $db)
@@ -32,10 +27,9 @@ class AuthController
         $this->db = $db;
     }
 
-
     public function login($mail, $mdp)
     {
-        $query = "SELECT mail, mdp FROM adherents WHERE mail = :mail";
+        $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal FROM adherents WHERE mail = :mail";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':mail', $mail);
         $stmt->execute();
@@ -43,23 +37,32 @@ class AuthController
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($userData) {
-            $user = new User($userData['mail'], $userData['mdp']);
+            $user = new User(
+                $userData['mail'],
+                $userData['mdp']
+            );
 
             if ($user->verifyPassword($mdp, $userData['mdp'])) {
-                //echo "Mot de passe correct";
+                session_start();
+                $_SESSION['mail'] = $mail;
+                $_SESSION['nom'] = $userData['nom'];
+                $_SESSION['prenom'] = $userData['prenom'];
+                $_SESSION['datedenaissance'] = $userData['datedenaissance'];
+                $_SESSION['tel'] = $userData['tel'];
+                $_SESSION['adresse'] = $userData['adresse'];
+                $_SESSION['ville'] = $userData['ville'];
+                $_SESSION['codepostal'] = $userData['codepostal'];
+                
                 return true;
-                //Authentification réussie
             }
         }
 
         return false;
-        //var_dump($mdp, $userData['mdp']);
-        //echo "Mot de passe incorrect"; // Authentification échouée
     }
 }
 
 session_start();
-// Processus de connexion
+
 try {
     $db = new PDO("mysql:host=localhost;dbname=database", "root", "");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -73,27 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
     $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
 
-    //echo "Nom d'utilisateur: $nom<br>";
-    // echo "Mot de passe: $mdp<br>";
-    //echo "Email : $mail<br>";
-
     if ($authController->login($mail, $mdp)) {
-        //echo "Authentification réussie ! Bienvenue, $mail.";
-        $_SESSION['mail'] = $mail;
-
-        // Set the time to expire to be 86400 seconds from now (aka in 24 hours)
-        //expires is given as a Unix timestamp - seconds since epoch 
-        $expires = time() + 86400;
-        $mail = $_COOKIE['mail'];
-        // Set the value.
-        setcookie("cookiemail", $mail, $expires);
-
-        $_COOKIE["mail"] = $name;
         header('Location: index.php');
-
-
         exit();
     } else {
         echo "Échec de l'authentification. Vérifiez vos informations de connexion.";
     }
 }
+?>

@@ -2,11 +2,14 @@
 session_start();
 
 require_once "poo_repository.php";
+require_once "poo_models.php";
 
 if (!isset($_SESSION['mail'])) {
     header('Location: index.php');
     exit;
-} else {
+} 
+
+/*else {
     $newValue = $champs;
     $toUpdate = $valeurs;
     // Appel de la méthode updateData
@@ -22,13 +25,15 @@ if ($updatedUser) {
 } else {
     echo "Échec de la mise à jour.";
 }
-
-
-
-
-
-
-
+*/
+$mail = $_SESSION['mail'];
+$nom = $_SESSION['nom'];
+$tel = $_SESSION['tel'];
+$prenom = $_SESSION['prenom'];
+$datedenaissance = $_SESSION['datedenaissance'];
+$adresse = $_SESSION['adresse'];
+$ville = $_SESSION['ville'];
+$codepostal = $_SESSION['codepostal'];
 ?>
 
 <!DOCTYPE html>
@@ -53,12 +58,7 @@ if ($updatedUser) {
 
 <body>
 
-    <tr>
-        <td><?php echo $nom["id"]; ?></td>
-        <td><?php echo $prenom["first_name"]; ?></td>
-        <td><?php echo $adresse["last_name"]; ?></td>
-        <td><a href="update-process.php?id=<?php echo $row["id"]; ?>">Update</a></td>
-    </tr>
+   
 
 
     <header id="header" class="fixed-top">
@@ -118,25 +118,25 @@ if ($updatedUser) {
                         <form action="" method="SESSION">
 
                             <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Prénom</label> <input type="text" class="form-control" placeholder="Prénom" value="" disabled></div>
+                                <div class="col-md-6"><label class="labels">Prénom</label> <input type="text" class="form-control" placeholder="Prénom" value="<?php echo htmlspecialchars($prenom); ?>" ></div>
 
-                                <div class="col-md-6"><label class="labels">NOM</label><input type="text" class="form-control" value="" placeholder="NOM" disabled></div>
+                                <div class="col-md-6"><label class="labels">NOM</label><input type="text" class="form-control" name="nom" value="<?php echo htmlspecialchars($nom); ?>"  ></div>
 
-                                <div class="col-md-6"><label class="labels">Date de naissance</label><input type="datedenaissance" name="datedenaissance" class="form-control" value="" placeholder="date"></div>
+                                <div class="col-md-6"><label class="labels">Date de naissance</label><input type="date" name="datedenaissance" class="form-control" value="<?php echo htmlspecialchars($datedenaissance); ?>" ></div>
 
                                 <div class="col-md-6"><label class="labels">Sexe</label><br><input type="radio" id="homme" name="civilite" value="Monsieur" checked /><label for="homme" id="h">Homme</label><input type="radio" id="femme" name="civilite" value="Madame" /><label for="Femme" id="f">Femme</label></div>
 
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-12"><label class="labels">N° Téléphone</label>
-                                    <input type="text" name="tel" class="form-control" placeholder="N° Téléphone" value="">
+                                    <input type="text" name="tel" class="form-control"  value="<?php echo htmlspecialchars($tel); ?>">
                                 </div>
 
-                                <div class="col-md-12"><label class="labels">Adresse</label><input type="text" name="adresse" class="form-control" placeholder="Adresse" value=""></div>
+                                <div class="col-md-12"><label class="labels">Adresse</label><input type="text" name="adresse" class="form-control" value="<?php echo htmlspecialchars($adresse); ?>"></div>
 
-                                <div class="col-md-12"><label class="labels">Code Postal</label><input type="text" class="form-control" name="codepostal" placeholder="Code Postal" value=""></div>
+                                <div class="col-md-12"><label class="labels">Code Postal</label><input type="text" class="form-control" name="codepostal"  value="<?php echo htmlspecialchars($codepostal); ?>"></div>
 
-                                <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" ,name="ville" placeholder="Ville" value=""></div>
+                                <div class="col-md-12"><label class="labels">Ville</label><input type="text" class="form-control" name="ville"  value="<?php echo htmlspecialchars($ville); ?>"></div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6"><label class="labels" for="situation">Situation familiale :</label>
@@ -171,7 +171,7 @@ if ($updatedUser) {
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center experience"><span>Modifier</span>
                         </div><br>
-                        <div class="col-md-12"><label class="labels">Email</label><input type="maild" name="mail" class="form-control" placeholder="Votre mail" value=""></div><br>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="maild" name="mail" class="form-control" placeholder="Votre mail" value="<?php echo htmlspecialchars($mail); ?>"></div><br>
                         <div class="col-md-12"><label class="labels">Mot de passe</label><input type="password" name="mdp" class="form-control" placeholder="Mot de passe" value=""></div>
                         <div class="col-md-12"><label class="labels">Confirmation du mot de passe</label><input type="password" class="form-control" placeholder="Confirmation du mot de passe" value=""></div>
                     </div>
