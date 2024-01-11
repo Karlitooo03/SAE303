@@ -82,10 +82,10 @@ if (isset($_COOKIE["mail"])) {
             <ul class="dropdown-menu" id="dropdownMenu">
               <li><a href="connexion.html" id="reservationLink">Connexion</a></li>
               <li><a href="inscription.html" id="inscriptionLink">Inscription</a></li>
-              <!--
+
               <li><a href="reservation.html" id="reservationLink">Réservation</a></li>
               <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
-              <li><a href="index.php" id="logoutLink">Déconnexion</a></li>-->
+              <li><a href="index.php" id="logoutLink">Déconnexion</a></li>
 
 
 
