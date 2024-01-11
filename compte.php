@@ -3,7 +3,7 @@ session_start();
 
 require_once "poo_repository.php";
 require_once "poo_models.php";
-
+/*
 if (!isset($_SESSION['mail'])) {
     header('Location: index.php');
     exit;
@@ -26,6 +26,9 @@ if ($updatedUser) {
     echo "Échec de la mise à jour.";
 }
 */
+
+var_dump($_SESSION['mail']) ;
+
 $mail = $_SESSION['mail'];
 $nom = $_SESSION['nom'];
 $tel = $_SESSION['tel'];

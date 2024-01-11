@@ -1,4 +1,9 @@
 <?php
+session_start();
+error_reporting(E_ALL); // Affiche toutes les erreurs
+ini_set('display_errors', 1);
+//$id_session = session_id();
+
 require_once "poo_models.php";
 
 class User
@@ -30,14 +35,22 @@ class AuthController
     public function login($mail, $mdp)
     {
         $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal  FROM adherents WHERE mail = :mail";
+        //echo $query;
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':mail', $mail);
-        $stmt->execute();
-        
         
 
-        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+        try {
+            $stmt->execute();
+            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+            //var_dump($userData);
+            //echo $userData;
+        } catch (PDOException $e) {
+            echo "Erreur PDO : " . $e->getMessage();
+        }
 
+        //var_dump($userData);
+        
         if ($userData) {
             $user = new User(
                 $userData['mail'],
@@ -45,7 +58,7 @@ class AuthController
             );
 
             if ($user->verifyPassword($mdp, $userData['mdp'])) {
-                session_start();
+                
                 $_SESSION['mail'] = $mail;
                 $_SESSION['nom'] = $userData['nom'];
                 $_SESSION['prenom'] = $userData['prenom'];
@@ -54,9 +67,7 @@ class AuthController
                 $_SESSION['adresse'] = $userData['adresse'];
                 $_SESSION['ville'] = $userData['ville'];
                 $_SESSION['codepostal'] = $userData['codepostal'];
-                
-                
-                
+                //var_dump ($user);
                 return true;
             }
         }
@@ -64,8 +75,6 @@ class AuthController
         return false;
     }
 }
-
-session_start();
 
 try {
     $db = new PDO("mysql:host=localhost;dbname=database", "root", "");
@@ -77,17 +86,18 @@ try {
 $authController = new AuthController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
-    $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING);
+    $mdp = $_POST['mdp'];
+    $mail = $_POST['mail'];
 
     if ($authController->login($mail, $mdp)) {
 
-        if ($mail=="admin@admin.fr")
-        {
+        if ($_SESSION['mail'] === "admin@admin.fr") {
             header('Location: membres.php');
+        } else {
+            //echo "bravo";
+            //echo 'ID de session (récupéré via session_id()) : <br>'.$id_session. '<br>';
+            header('Location: index.php');
         }
-        else
-        header('Location: index.php');
         exit();
     } else {
         echo "Échec de l'authentification. Vérifiez vos informations de connexion.";
