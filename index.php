@@ -85,7 +85,9 @@ if (isset($_COOKIE["mail"])) {
 
               <li><a href="reservation.html" id="reservationLink">Réservation</a></li>
               <li><a href="compte.php" id="profileLink">Modifier mon profil</a></li>
-              <li><a href="index.php" id="logoutLink">Déconnexion</a></li>
+              <li><a href="index.php" id="logoutLink">Déconnexion<?php
+                                                                  session_destroy();
+                                                                  ?></a></li>
 
 
 
