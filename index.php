@@ -84,7 +84,7 @@ if (isset($_COOKIE["mail"])) {
               <li><a href="inscription.html" id="inscriptionLink">Inscription</a></li>
 
               <li><a href="reservation.html" id="reservationLink">Réservation</a></li>
-              <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
+              <li><a href="compte.php" id="profileLink">Modifier mon profil</a></li>
               <li><a href="index.php" id="logoutLink">Déconnexion</a></li>
 
 
@@ -452,7 +452,7 @@ if (isset($_COOKIE["mail"])) {
       <p class="col-md-4 mb-0 text-body-secondary">© 2023 ACF2L, Inc</p>
       <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item"><a href="index.php" class="nav-link px-2 text-body-secondary">Accueil</a></li>
-        <li class="nav-item"><a href="connexion.html" class="nav-link px-2 text-body-secondary">Compte</a></li>
+        <li class="nav-item"><a href="compte.php" class="nav-link px-2 text-body-secondary">Compte</a></li>
         <li class="nav-item"><a href="tarifs.html" class="nav-link px-2 text-body-secondary">Tarifs</a></li>
         <li class="nav-item"><a href="galerie.html" class="nav-link px-2 text-body-secondary">Galerie</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link px-2 text-body-secondary">Contact</a></li>
