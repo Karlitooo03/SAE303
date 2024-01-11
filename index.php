@@ -239,29 +239,29 @@ if (isset($_COOKIE["mail"])) {
         <div class="row justify-content-end">
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Lorem Ipsum</p>
+              <span data-purecounter-start="0" data-purecounter-end="45" data-purecounter-duration="2" class="purecounter"></span>
+              <p>hectares dégagés</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Lorem Ipsum</p>
+              <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="2" class="purecounter"></span>
+              <p>hectares d'hydrosyrface</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Lorem Ipsum</p>
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="2" class="purecounter"></span>
+              <p>hangars avec surface couvert de 4300 m2</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Lorem Ipsum</p>
+              <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="2" class="purecounter"></span>
+              <p>pistes en X de 800 et 450 mètres</p>
             </div>
           </div>
         </div>
