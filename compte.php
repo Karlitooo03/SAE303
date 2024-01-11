@@ -34,6 +34,7 @@ $datedenaissance = $_SESSION['datedenaissance'];
 $adresse = $_SESSION['adresse'];
 $ville = $_SESSION['ville'];
 $codepostal = $_SESSION['codepostal'];
+$situation = $_SESSION['situation'];
 ?>
 
 <!DOCTYPE html>
@@ -140,8 +141,8 @@ $codepostal = $_SESSION['codepostal'];
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6"><label class="labels" for="situation">Situation familiale :</label>
-                                    <select name="situation" id="situation-select">
-                                        <option value="">--Choisissez une option--</option>
+                                    <select name="situation" value="<?php echo htmlspecialchars($situation); ?>" id="situation-select">
+                                        <option value="<?php echo htmlspecialchars($situation); ?>">--Choisissez une option--</option>
                                         <option value="Célibataire">Célibataire</option>
                                         <option value="Divorcé(e)">Divorcé(e)</option>
                                         <option value="Veuf(ve)">Veuf(ve)</option>
