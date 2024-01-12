@@ -47,12 +47,12 @@
             <form class="needs-validation " novalidate action="exec.php" method="POST">
               <div class="form-group custom-margin-left">
                 <div class=" form-check-inline">
-                  <input class="form-check-input" type="radio" id="mOption" name="civilite" value="Monsieur">
+                  <input class="form-check-input" type="radio" id="mOption" name="civilite" value="Monsieur" required>
                   <label class="form-check-label" for="mOption">M</label>
                 </div>
 
                 <div class=" form-check-inline mx-auto mt-auto">
-                  <input class="form-check-input" type="radio" id="mmeOption" name="civilite" value="Madame">
+                  <input class="form-check-input" type="radio" id="mmeOption" name="civilite" value="Madame" required>
                   <label class="form-check-label" for="mmeOption">Mme</label>
                 </div>
                 <div class="row g-3">
@@ -87,14 +87,14 @@
 
                   <div class="col-10">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control" name="mail" id="email" placeholder="you@example.com">
+                    <input type="email" class="form-control" name="mail" id="email" placeholder="you@example.com" required>
                     <div class="invalid-feedback">
                       Veuillez saisir une adresse mail valide.
                     </div>
                   </div>
                   <div class="col-10">
                     <label class="form-label">Téléphone</label>
-                    <input type="tel" class="form-control" name="tel" id="tel" placeholder="06 30 27 12 31">
+                    <input type="tel" class="form-control" name="tel" id="tel" placeholder="06 30 27 12 31" required>
                     <div class="invalid-feedback">
                       Veuillez saisir un numéro valide.
                     </div>
@@ -107,7 +107,7 @@
           <div class="col">
             <div class="col-10">
               <label class="form-label">Adresse</label>
-              <input type="text" class="form-control" name="adresse" id="adresse" placeholder="32 avenue Mandela">
+              <input type="text" class="form-control" name="adresse" id="adresse" placeholder="32 avenue Mandela" required>
               <div class="invalid-feedback">
                 Veuillez saisir une adresse valide.
               </div>
@@ -132,14 +132,14 @@
               <div class="col-10">
 
                 <label class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" name="mdp" id="mdp" placeholder="votre_mot_de_passe">
+                <input type="password" class="form-control" name="mdp" id="mdp" placeholder="votre_mot_de_passe" required>
                 <div class="invalid-feedback">
                   Veuillez saisir un mot de passe valide.
                 </div>
               </div>
               <div class="col-10">
                 <label class="form-label"></label>
-                <input type="password" class="form-control" id="cfrmdp" placeholder="confirmez_votre_mot_de_passe">
+                <input type="password" class="form-control" id="cfrmdp" placeholder="confirmez_votre_mot_de_passe" required>
                 <div class="invalid-feedback">
                   Veuillez saisir un mot de passe valide.
                 </div>
