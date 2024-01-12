@@ -95,6 +95,8 @@ $codepostal = $_SESSION['codepostal'];
                     <li class="dropdown" id="accountDropdown">
                         <a href="connexion.html" class="nav-link scrollto" id="dropdownToggle">Compte <i class="bi bi-chevron-down"></i></a>
                         <ul class="dropdown-menu" id="dropdownMenu">
+                        <li><a href="connexion.html" id="reservationLink">Connexion</a></li>
+              <li><a href="inscription.html" id="inscriptionLink">Inscription</a></li>
                             <li><a href="#" id="reservationLink">Réservation</a></li>
                             <li><a href="compte.html" id="profileLink">Modifier mon profil</a></li>
                             <li><a href="#" id="logoutLink">Déconnexion</a></li>
