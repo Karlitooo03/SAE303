@@ -53,7 +53,7 @@ class Repository extends Model
 
 		$sql = "INSERT INTO " . $this->table . '(' . $champs . ')' . " VALUES (" . $valeurs . ")";
 
-		echo $sql;
+		//echo $sql;
 
 		$statt = $this->db->prepare($sql);
 

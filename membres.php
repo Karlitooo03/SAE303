@@ -1,6 +1,8 @@
 <?php
 session_start();
 //require_once "exec.php";
+error_reporting(E_ERROR | E_PARSE); //Enleve les Warining
+
 require_once "poo_models.php";
 require_once "poo_repository.php";
 ?>
@@ -12,7 +14,7 @@ require_once "poo_repository.php";
 */
 function afficherTable($table, $colonnes)
 {
-    try {
+   // try {
         $modele = new Model($table);
         $repository = new Repository($modele->getTable());
 
@@ -35,18 +37,19 @@ function afficherTable($table, $colonnes)
             echo '</tr>';
         }
 
-        echo '</table>';
+        echo '</table>';/*
     } catch (PDOException $e) {
-        die($e->getMessage());
+        //die($e->getMessage());*/
     }
-}
+//}
 
 // Afficher le tableau des adhérents
-    $colonnesAdherents = ['civilite', 'prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'mdp', 'codepostal', 'ville'];
+    $colonnesAdherents = ['civilite', 'prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'codepostal', 'ville'];
     //afficherTable('adherents', $colonnesAdherents);
 
     $colonnesReservations = ['prenom', 'nom', 'date', 'mail', 'mailpilote', 'activite', 'avion'];
 
+    $colonnesPilotes = ['prenom', 'nom', 'diplome', 'mailpilote'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +96,9 @@ function afficherTable($table, $colonnes)
                 font-size: 106px;
                 fill: #1d1e1d;
                 font-family: Helvetica;
+
+                
+                
               }
             </style>
           </defs>
@@ -125,12 +131,18 @@ function afficherTable($table, $colonnes)
     </div>
   </header>
   <body>
-    <div>
+    <div id="aff">
     <?php afficherTable('adherents', $colonnesAdherents); ?>
+    </div>
+
     <div>
     <?php afficherTable('reservations', $colonnesReservations); ?>
     </div>
+    <div>
+    
+    <?php afficherTable('pilotes', $colonnesPilotes);?>
     </div>
+    
   </body>
             </body>
             </html>

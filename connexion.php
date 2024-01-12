@@ -1,9 +1,10 @@
 <?php
 session_start();
+/*
 error_reporting(E_ALL); // Affiche toutes les erreurs
 ini_set('display_errors', 1);
 //$id_session = session_id();
-
+*/
 require_once "poo_models.php";
 
 class User
@@ -34,7 +35,7 @@ class AuthController
 
     public function login($mail, $mdp)
     {
-        $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal  FROM adherents WHERE mail = :mail";
+        $query = "SELECT mail, mdp, nom, prenom, datedenaissance, tel, adresse, ville, codepostal, situation, charge  FROM adherents WHERE mail = :mail";
         //echo $query;
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':mail', $mail);
@@ -67,6 +68,8 @@ class AuthController
                 $_SESSION['adresse'] = $userData['adresse'];
                 $_SESSION['ville'] = $userData['ville'];
                 $_SESSION['codepostal'] = $userData['codepostal'];
+                $_SESSION['situation'] = $userData['situation'];
+                $_SESSION['charge'] = $userData['charge'];
                 //var_dump ($user);
                 return true;
             }
