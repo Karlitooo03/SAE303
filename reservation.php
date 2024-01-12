@@ -10,30 +10,26 @@ echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstra
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>';
 
-  try{
+try {
   // Insérer des données dans la table des reservations
-$modele = new Model('reservations');
-$tab2 = new Repository($modele->getTable());
+  $modele = new Model('reservations');
+  $tab2 = new Repository($modele->getTable());
 
-$mail = $_POST["mail"];
-$date = $_POST["date"];
+  $mail = $_POST["mail"];
+  $date = $_POST["date"];
 
-$activite = $_POST["activite"];
-// Assurez-vous que la clé "charge" existe
+  $activite = $_POST["activite"];
+  // Assurez-vous que la clé "charge" existe
 
 
 
-$champs = "mail, date, activite";
-$valeurs = "'$mail', '$date', '$activite'";
+  $champs = "mail, date, activite";
+  $valeurs = "'$mail', '$date', '$activite'";
 
-$tab2->insertData($champs, $valeurs);
+  $tab2->insertData($champs, $valeurs);
 
-//Il redirige vers page.php
-header('Location:index.php');
-
-  }catch(PDOException $e){
-    die($e->getMessage());
-  }
-
-  
-  ?>
+  //Il redirige vers page.php
+  header('Location:index.php');
+} catch (PDOException $e) {
+  die($e->getMessage());
+}
