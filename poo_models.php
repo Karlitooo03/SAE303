@@ -39,7 +39,7 @@ class Model extends Database
 	}
 	function __construct4(string $avions)
 	{
-		$this->table = $pilotes;
+		$this->table = $avions;
 		$this->db = Database::getInstance();
 	}
 }

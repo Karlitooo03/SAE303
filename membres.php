@@ -45,6 +45,7 @@ function afficherTable($table, $colonnes)
     $colonnesAdherents = ['civilite', 'prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'mdp', 'codepostal', 'ville'];
     //afficherTable('adherents', $colonnesAdherents);
 
+    $colonnesReservations = ['prenom', 'nom', 'date', 'mail', 'mailpilote', 'activite', 'avion'];
 
 ?>
 <!DOCTYPE html>
@@ -126,6 +127,9 @@ function afficherTable($table, $colonnes)
   <body>
     <div>
     <?php afficherTable('adherents', $colonnesAdherents); ?>
+    <div>
+    <?php afficherTable('reservations', $colonnesReservations); ?>
+    </div>
     </div>
   </body>
             </body>

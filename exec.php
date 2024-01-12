@@ -5,8 +5,6 @@ require_once "poo_repository.php";
 require_once "poo_models.php";
 
 
-require_once "poo_repository.php";
-require_once "poo_models.php";
 
 echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -39,6 +37,7 @@ try {
 
     $tab1->insertData($champs, $valeurs);
 
+/
     //Il redirige vers page.php
     header('Location:index.php');
     //Il arrête le script et n'exécute pas le code qui pourrais se trouver en dessous
@@ -47,11 +46,11 @@ try {
     $colonnesAdherents = ['civilite', 'prenom', 'nom', 'datedenaissance', 'mail', 'adresse', 'situation', 'charge', 'tel', 'mdp', 'codepostal', 'ville'];
     afficherTable('adherents', $colonnesAdherents);
 
-    // Afficher le tableau des réservations
-    /*$colonnesReservations = ['prenom', 'nom', 'date', 'mail', 'pilote', 'activité', 'avion', 'tel'];
+   /* // Afficher le tableau des réservations
+    $colonnesReservations = ['prenom', 'nom', 'date', 'mail', 'pilote', 'activité', 'avion', 'tel'];
     afficherTable('reservations', $colonnesReservations);
 
-    // Afficher le tableau des pilotes
+   /* // Afficher le tableau des pilotes
     $colonnesPilotes = ['prenom', 'nom', 'tel', 'diplome', 'mail'];
     afficherTable('pilotes', $colonnesPilotes);
 

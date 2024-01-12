@@ -11,35 +11,37 @@
 
 <body>
     <!-- formulaire nous donnant la possibilité de choisir une ou plusieurs activités-->
+    <form action="reservation.php" method="post">
     <div class="container">
         <div class="contenu">
             <div class="explicatif">
                 <h1 class="fs-1">Choisissez les activités qui vous intéressent</h1>
-                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox"> <label class="p-1"> Baptème
+                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox" name="activite" value="bapteme de lair" > <label class="p-1"> Baptème
                         de l'air
                     </label></p>
-                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox"> <label class="p-1"> Formation
+                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox" name="activite" value="formation"> <label class="p-1"> Formation
                     </label>
                 </p>
-                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox"> <label class="p-1"> Montage
+                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox" name="activite" value="montage des ULM"> <label class="p-1"> Montage
                         des
                         ULM</label></p>
-                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox"> <label class="p-1">
+                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox" name="activite" value="autogire"> <label class="p-1">
                         Autogire</label>
                 </p>
-                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox"> <label class="p-1">
+                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox" name="activite" value="multiaxe" > <label class="p-1">
                         Multiaxe</label>
                 </p>
-                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox"> <label class="p-1">
+                <p class="input-group-text my-2 "><input class="checkbox" type="checkbox" name="activite" value="pendulaire" > <label class="p-1">
                         Pendulaire</label>
                 </p>
 
             </div>
+        
             <div class="droite">
                 <div class="entete"><span class="text">RÉSERVATION</span></div>
                 <div class="carte d-flex flex-column justify-content-between ">
 
-                    <form class="needs-validation" novalidate action="connexion.php" method="post">
+                    
                         <div class="form-group">
                             <label for="email" class="form-label">Adresse e-mail</label>
                             <input type="email" class="form-control" id="email" placeholder="you@example.com" required
@@ -56,6 +58,16 @@
                                 Veuillez entrer votre mot de passe.
                             </div>
                         </div>
+                        <div class="col-10">
+                            <label for="username" class="form-label">Veuillez choisir une date</label>
+                            <div class="input-group has-validation">
+        
+                              <input type="date" class="form-control" name="date"  placeholder="JJ/MM/AAAA"   required>
+                              <div class="invalid-feedback">
+                                Veuillez choisir une date
+                              </div>
+                            </div>
+                          </div>
                         <button class="btn btn-primary btn-block mt-3" type="submit">Réserver</button>
 
                     </form>

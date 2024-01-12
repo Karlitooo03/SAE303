@@ -3,21 +3,24 @@ session_start();
 
 require_once "poo_repository.php";
 require_once "poo_models.php";
-/*
+
 if (!isset($_SESSION['mail'])) {
     header('Location: index.php');
     exit;
 } 
 
-/*else {
+else {
     $newValue = $champs;
     $toUpdate = $valeurs;
     // Appel de la méthode updateData
-    $repository->updateData("mail", $newValue, $toUpdate);
+    if ($_POST['tel'] && $_POST['mail']  && $_POST['nom']  && $_POST['prenom']  && $_POST['ville']  && $_POST['codepostal']  && $_POST['charge']  && $_POST['situation']  ){
+        $repository->updateData("mail", $newValue, $toUpdate);
 
+    }
+   
     // Vous pouvez également ajouter une vérification pour voir si la mise à jour a réussi
     // Exemple de vérification
-    $updatedUser = $repository->findBy(["mail" => $toUpdate]);
+    $updatedUser = $repository->findBy($_SESSION['mail']);
 }
 
 if ($updatedUser) {
@@ -25,7 +28,6 @@ if ($updatedUser) {
 } else {
     echo "Échec de la mise à jour.";
 }
-*/
 
 var_dump($_SESSION['mail']) ;
 
@@ -37,6 +39,8 @@ $datedenaissance = $_SESSION['datedenaissance'];
 $adresse = $_SESSION['adresse'];
 $ville = $_SESSION['ville'];
 $codepostal = $_SESSION['codepostal'];
+$charge = $_SESSION['charge'];
+$situation = $_SESSION['situation'];
 
 ?>
 
@@ -146,7 +150,7 @@ $codepostal = $_SESSION['codepostal'];
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6"><label class="labels" for="situation">Situation familiale :</label>
-                                    <select name="situation"  id="situation-select">
+                                    <select name="situation"  id="situation-select" value="<?php echo htmlspecialchars($situation); ?> >
                                         <option value="">--Choisissez une option--</option>
                                         <option value="Célibataire">Célibataire</option>
                                         <option value="Divorcé(e)">Divorcé(e)</option>
@@ -157,8 +161,8 @@ $codepostal = $_SESSION['codepostal'];
                                 </div>
                                 <div class="col-md-6"><label class="labels" for="charge">Nombre de personnes à charge
                                         :</label>
-                                    <select name="charge" id="personne-select">
-                                        <option value="">--Choisissez une option--</option>
+                                    <select name="charge" id="personne-select" value="<?php echo htmlspecialchars($charge); ?>>
+                                        <option value=">--Choisissez une option--</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
